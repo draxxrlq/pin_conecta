@@ -215,9 +215,34 @@ document.addEventListener("keydown", (event) => {
 
   if (
     event.key === "Escape" &&
+
+    
     lightbox.classList.contains("aberto")
   ) {
     fecharLightbox();
   }
 
 });
+
+
+// Controle de Som do Vídeo da Página Inicial
+const videoHero = document.getElementById('hero-video');
+const btnSom = document.getElementById('btn-som');
+
+if (videoHero && btnSom) {
+  const labelSom = btnSom.querySelector('.video-audio-label');
+
+  btnSom.addEventListener('click', () => {
+    if (videoHero.muted) {
+      videoHero.muted = false;
+      btnSom.classList.add('com-som');
+      if (labelSom) labelSom.textContent = 'Silenciar';
+      btnSom.setAttribute('aria-label', 'Silenciar som do vídeo');
+    } else {
+      videoHero.muted = true;
+      btnSom.classList.remove('com-som');
+      if (labelSom) labelSom.textContent = 'Ativar som';
+      btnSom.setAttribute('aria-label', 'Ativar som do vídeo');
+    }
+  });
+}
