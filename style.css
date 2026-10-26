@@ -1672,3 +1672,98 @@ footer li button:hover {
 body.lightbox-aberto {
   overflow: hidden;
 }
+/* =============================================
+   VÍDEO HERO (TELA INICIAL)
+============================================= */
+
+.hero-media.video-box {
+  position: relative;
+  height: 540px;
+  max-width: 420px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--marrom-escuro);
+  border: 4px solid var(--branco);
+  border-radius: 28px;
+  box-shadow: var(--sombra-forte);
+}
+
+.hero-media.video-box video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Badge indicativo */
+.video-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 6px 12px;
+  background: rgba(53, 28, 18, 0.75);
+  backdrop-filter: blur(6px);
+  color: var(--branco);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* Botão de som acessível */
+.video-audio-toggle {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(20, 10, 5, 0.78);
+  backdrop-filter: blur(8px);
+  color: var(--branco);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  z-index: 5;
+}
+
+.video-audio-toggle:hover {
+  background: rgba(20, 10, 5, 0.95);
+  transform: scale(1.03);
+}
+
+.video-audio-toggle .icon-som {
+  display: none;
+}
+
+.video-audio-toggle.com-som .icon-som {
+  display: block;
+}
+
+.video-audio-toggle.com-som .icon-mudo {
+  display: none;
+}
+
+/* Ajustes para Mobile */
+@media (max-width: 650px) {
+  .hero-media.video-box {
+    width: 100%;
+    max-width: 330px;
+    height: 480px; /* Mantém a proporção vertical ideal do vídeo */
+    border-radius: 22px;
+  }
+
+  .video-audio-toggle {
+    bottom: 14px;
+    right: 14px;
+    padding: 7px 12px;
+    font-size: 11px;
+  }
+}
