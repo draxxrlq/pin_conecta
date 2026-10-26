@@ -1,21 +1,1907 @@
-// Controle de Som do Vídeo da Página Inicial
-const videoHero = document.getElementById('hero-video');
-const btnSom = document.getElementById('btn-som');
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-if (videoHero && btnSom) {
-  const labelSom = btnSom.querySelector('.video-audio-label');
+<head>
+  <meta charset="UTF-8">
 
-  btnSom.addEventListener('click', () => {
-    if (videoHero.muted) {
-      videoHero.muted = false;
-      btnSom.classList.add('com-som');
-      if (labelSom) labelSom.textContent = 'Silenciar';
-      btnSom.setAttribute('aria-label', 'Silenciar som do vídeo');
-    } else {
-      videoHero.muted = true;
-      btnSom.classList.remove('com-som');
-      if (labelSom) labelSom.textContent = 'Ativar som';
-      btnSom.setAttribute('aria-label', 'Ativar som do vídeo');
-    }
-  });
-}
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Empório dos Cereais - Produtos naturais em Parintins, Amazonas."
+  >
+
+  <title>Empório dos Cereais | Produtos Naturais</title>
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ==============================
+       CABEÇALHO
+  =============================== -->
+
+  <header id="site-header">
+
+    <div class="container nav">
+
+      <div class="brand">
+
+        <img
+          src="img/logo.png"
+          alt="Logo do Empório dos Cereais"
+          class="logo"
+        >
+
+        <div class="brand-text">
+          <strong>Empório dos Cereais</strong>
+          <span>Produtos Naturais</span>
+        </div>
+
+      </div>
+
+
+      <nav class="links" id="tabNav">
+
+        <button class="active" data-goto="inicio">
+          Início
+        </button>
+
+        <button data-goto="sobre">
+          Sobre
+        </button>
+
+        <button data-goto="produtos">
+          Produtos
+        </button>
+
+        <button data-goto="novidades">
+          Novidades
+        </button>
+
+        <button data-goto="contato">
+          Contato
+        </button>
+
+      </nav>
+
+
+      <div class="nav-cta">
+
+        <button
+          class="btn btn-primary"
+          data-goto="contato"
+        >
+          Fale conosco
+        </button>
+
+        <button
+          class="burger"
+          id="burgerBtn"
+          aria-label="Abrir menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- MENU MOBILE -->
+
+    <div id="mobile-menu">
+
+      <button data-goto="inicio">
+        Início
+      </button>
+
+      <button data-goto="sobre">
+        Sobre
+      </button>
+
+      <button data-goto="produtos">
+        Produtos
+      </button>
+
+      <button data-goto="novidades">
+        Novidades
+      </button>
+
+      <button data-goto="contato">
+        Contato
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- ==============================
+       CONTEÚDO
+  =============================== -->
+
+  <main>
+
+
+    <!-- ==============================
+         INÍCIO
+    =============================== -->
+
+    <section
+      class="panel active"
+      id="panel-inicio"
+    >
+
+      <div class="hero">
+
+        <div class="container">
+
+          <div class="hero-grid">
+
+
+            <div class="hero-copy">
+
+              <span class="eyebrow">
+                Produtos Naturais · Parintins - AM
+              </span>
+
+              <h1>
+                Variedade em produtos
+                <em>naturais e regionais.</em>
+              </h1>
+
+              <p class="lead">
+                Conheça o Empório dos Cereais e encontre
+                diferentes opções de ervas, castanhas,
+                farinhas, fibras, cascas e outros
+                produtos naturais.
+              </p>
+
+
+              <div class="hero-actions">
+
+                <button
+                  class="btn btn-primary"
+                  data-goto="produtos"
+                >
+                  Ver produtos
+                </button>
+
+                <button
+                  class="btn btn-outline"
+                  data-goto="sobre"
+                >
+                  Conheça nossa história
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="hero-media video-box">
+
+              <video
+                id="hero-video"
+                src="video.mp4"
+                poster="img/lojs.png"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Vídeo mostrando o interior e atendimento do Empório dos Cereais"
+              ></video>
+
+              <!-- Botão para ligar/desligar o som (100% SVG, sem emoji) -->
+              <button
+                type="button"
+                id="btn-som"
+                class="video-audio-toggle"
+                aria-label="Ativar som do vídeo"
+              >
+                <!-- Ícone Mudo (padrão inicial) -->
+                <svg class="icon-mudo" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <line x1="23" y1="9" x2="17" y2="15"></line>
+                  <line x1="17" y1="9" x2="23" y2="15"></line>
+                </svg>
+
+                <!-- Ícone Som Ativo -->
+                <svg class="icon-som" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+                
+                <span class="video-audio-label">Ativar som</span>
+              </button>
+
+              <span class="video-badge">Conheça nossa loja</span>
+
+            </div>
+
+          </div>
+
+
+          <!-- DESTAQUES -->
+
+          <div class="highlight-row">
+
+            <div class="highlight-card">
+
+              <h4>Variedade de produtos</h4>
+
+              <p>
+                Ervas, castanhas, farinhas, fibras,
+                cascas e diversas opções de
+                produtos naturais.
+              </p>
+
+            </div>
+
+
+            <div class="highlight-card">
+
+              <h4>Reposição frequente</h4>
+
+              <p>
+                Novas mercadorias costumam chegar
+                semanalmente ao estabelecimento.
+              </p>
+
+            </div>
+
+
+            <div class="highlight-card">
+
+              <h4>Produtos selecionados</h4>
+
+              <p>
+                Cuidado na escolha, armazenamento
+                e renovação dos produtos da loja.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- APRESENTAÇÃO -->
+
+          <div class="home-about">
+
+            <div class="home-about-text">
+
+              <span class="eyebrow">
+                Conheça o Empório
+              </span>
+
+              <h2>
+                Produtos naturais em Parintins.
+              </h2>
+
+              <p>
+                O Empório dos Cereais nasceu da vontade
+                de empreender em um segmento diferente
+                no mercado local. A loja trabalha com
+                diferentes tipos de produtos naturais
+                e busca acompanhar as novidades do setor.
+              </p>
+
+              <button
+                class="btn btn-outline"
+                data-goto="sobre"
+              >
+                Conheça nossa história
+              </button>
+
+            </div>
+
+
+            <div class="home-about-info">
+
+              <span>Parintins - AM</span>
+
+              <span>Produtos naturais</span>
+
+              <span>Reposição semanal</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==============================
+         SOBRE
+    =============================== -->
+
+    <section
+      class="panel"
+      id="panel-sobre"
+    >
+
+      <div class="section-pad">
+
+        <div class="container">
+
+          <div class="section-head">
+
+            <span class="eyebrow">
+              Sobre nós
+            </span>
+
+            <h2>
+              Conheça a história do
+              Empório dos Cereais.
+            </h2>
+
+            <p>
+              Um empreendimento que surgiu da vontade
+              de explorar uma oportunidade diferente
+              no mercado local.
+            </p>
+
+          </div>
+
+
+          <div class="sobre-grid">
+
+            <div class="sobre-media">
+
+              <img
+                src="img/produtos-naturais.png"
+                alt="Produtos do Empório dos Cereais"
+              >
+
+            </div>
+
+
+            <div class="sobre-copy">
+
+              <span class="eyebrow">
+                Nossa história
+              </span>
+
+              <h2>
+                Uma ideia que se transformou
+                em empreendimento.
+              </h2>
+
+              <p>
+                O Empório dos Cereais surgiu a partir
+                da vontade de empreender e da busca
+                por uma oportunidade diferente no
+                mercado local.
+              </p>
+
+              <p>
+                Inicialmente, a ideia era investir em
+                outro segmento. Após pesquisar diferentes
+                tipos de estabelecimentos, surgiu o
+                interesse pelo mercado de produtos naturais.
+              </p>
+
+              <p>
+                Mesmo sem experiência inicial nesse
+                segmento, a ideia despertou interesse.
+                Com pesquisa, dedicação e apoio familiar
+                para o investimento, o empreendimento
+                começou a ganhar forma.
+              </p>
+
+              <p>
+                Desde então, a busca por conhecimento
+                sobre os produtos e as novidades do
+                mercado passou a fazer parte da rotina
+                do estabelecimento.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- CUIDADO -->
+
+          <div class="qualidade">
+
+            <div class="section-head">
+
+              <span class="eyebrow">
+                Nosso cuidado
+              </span>
+
+              <h2>
+                Renovação e cuidado com os produtos.
+              </h2>
+
+            </div>
+
+            <p>
+              Alguns produtos naturais exigem atenção
+              especial ao armazenamento e ao período
+              em que permanecem no estoque.
+            </p>
+
+            <p>
+              Por isso, o Empório dos Cereais prioriza
+              compras mais frequentes em vez de manter
+              grandes quantidades de determinados produtos
+              armazenadas por muito tempo.
+            </p>
+
+            <p>
+              Novas mercadorias costumam chegar
+              semanalmente, principalmente às quintas-feiras.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==============================
+         PRODUTOS
+    =============================== -->
+
+    <section
+      class="panel"
+      id="panel-produtos"
+    >
+
+      <div class="section-pad">
+
+        <div class="container">
+
+          <div class="section-head">
+
+            <span class="eyebrow">
+              Nossos produtos
+            </span>
+
+            <h2>
+              Variedade de produtos naturais.
+            </h2>
+
+            <p>
+              Conheça algumas das opções encontradas
+              no Empório dos Cereais. A disponibilidade
+              pode variar conforme o estoque.
+            </p>
+
+          </div>
+
+
+          <div class="produtos-grid">
+
+
+            <!-- CAVALINHA -->
+
+            <article class="produto-card">
+
+              <img
+                src="img/cavalinha.png"
+                alt="Cavalinha em folhas"
+              >
+
+              <div class="produto-info">
+
+                <span class="produto-tag">
+                  Ervas e folhas
+                </span>
+
+                <h3>Cavalinha</h3>
+
+                <p>
+                  Uma das opções de ervas disponíveis
+                  no Empório dos Cereais.
+                </p>
+
+              
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Tradicionalmente usada em chás pela ação diurética e por ser fonte de silício.</p>
+
+              </div>
+
+            </article>
+
+
+            <!-- HIBISCO -->
+
+            <article class="produto-card">
+
+              <img
+                src="img/hibisco.png"
+                alt="Flor de hibisco"
+              >
+
+              <div class="produto-info">
+
+                <span class="produto-tag">
+                  Ervas e flores
+                </span>
+
+                <h3>Hibisco</h3>
+
+                <p>
+                  Flor de hibisco disponível entre
+                  a variedade de produtos naturais
+                  da loja.
+                </p>
+
+              
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Muito consumido em chá, tradicionalmente associado à ação diurética e antioxidante.</p>
+
+              </div>
+
+            </article>
+
+
+            <!-- CASTANHAS -->
+
+            <article class="produto-card">
+
+              <img
+                src="img/castanhas.png"
+                alt="Castanhas"
+              >
+
+              <div class="produto-info">
+
+                <span class="produto-tag">
+                  Castanhas
+                </span>
+
+                <h3>
+                  Castanhas e derivados
+                </h3>
+
+                <p>
+                  Castanha-do-Brasil, castanha-de-caju,
+                  farinhas e outros derivados disponíveis.
+                </p>
+
+              
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Fonte de energia, proteínas e gorduras boas; a castanha-do-Brasil é rica em selênio.</p>
+
+              </div>
+
+            </article>
+
+
+            <!-- CANELAS -->
+
+            <article class="produto-card">
+
+              <img
+                src="img/canelas.png"
+                alt="Canela em pó e canela em pau"
+              >
+
+              <div class="produto-info">
+
+                <span class="produto-tag">
+                  Canelas
+                </span>
+
+                <h3>Canelas</h3>
+
+                <p>
+                  Canela em pó e canela em pau
+                  disponíveis no Empório dos Cereais.
+                </p>
+
+              
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Dão sabor a doces e bebidas e são tradicionalmente associadas à digestão e à ação antioxidante.</p>
+
+              </div>
+
+            </article>
+
+
+            <!-- FIBRAS -->
+
+            <article class="produto-card">
+
+              <img
+                src="img/fibras.png"
+                alt="Fibras e farinhas"
+              >
+
+              <div class="produto-info">
+
+                <span class="produto-tag">
+                  Farinhas e fibras
+                </span>
+
+                <h3>
+                  Fibras e farinhas
+                </h3>
+
+                <p>
+                  Diferentes tipos de fibras e farinhas
+                  disponíveis entre os produtos da loja.
+                </p>
+
+              
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Ajudam no funcionamento do intestino e dão mais saciedade às refeições.</p>
+
+              </div>
+
+            </article>
+
+
+            <!-- CASCAS E ERVAS -->
+
+            <article class="produto-card">
+
+              <img
+                src="img/cascas-ervas.png"
+                alt="Cascas e ervas"
+              >
+
+              <div class="produto-info">
+
+                <span class="produto-tag">
+                  Ervas e cascas
+                </span>
+
+                <h3>
+                  Cascas e ervas
+                </h3>
+
+                <p>
+                  Diversas opções de cascas e ervas
+                  comercializadas em embalagens.
+                </p>
+
+              
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Usadas em chás e preparos tradicionais; cada uma tem seu uso, consulte a loja.</p>
+
+              </div>
+
+            </article>
+
+
+            <!-- CATUABA -->
+
+            <article class="produto-card">
+
+              <img
+                src="img/catuaba.png"
+                alt="Catuaba"
+              >
+
+              <div class="produto-info">
+
+                <span class="produto-tag">
+                  Produtos naturais
+                </span>
+
+                <h3>Catuaba</h3>
+
+                <p>
+                  Catuaba disponível entre a variedade
+                  de produtos naturais do Empório.
+                </p>
+
+              
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Tradicionalmente consumida como tônico para dar mais disposição.</p>
+
+              </div>
+
+            </article>
+
+
+            <!-- ERVAS EMBALADAS -->
+
+            <article class="produto-card">
+
+              <img
+                src="img/ervas-embaladas.png"
+                alt="Ervas embaladas"
+              >
+
+              <div class="produto-info">
+
+                <span class="produto-tag">
+                  Ervas
+                </span>
+
+                <h3>
+                  Ervas embaladas
+                </h3>
+
+                <p>
+                  Diferentes variedades de ervas
+                  embaladas disponíveis no estabelecimento.
+                </p>
+
+              
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Chás do dia a dia, escolhidos conforme o que cada erva oferece.</p>
+
+              </div>
+
+            </article>
+
+
+            <!-- NOVOS PRODUTOS -->
+
+            <article class="produto-card">
+
+              <img src="img/loja/sal-rosa.jpg" alt="Sal rosa do Himalaia" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Temperos</span>
+
+                <h3>Sal rosa do Himalaia</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Rico em minerais, entre eles o potássio, e promove equilíbrio natural no organismo, segundo a loja.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/noz-moscada.jpg" alt="Noz-moscada" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Especiarias</span>
+
+                <h3>Noz-moscada</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Dá sabor e aroma a pratos doces e salgados e também é usada de forma medicinal.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/fumaca-em-po.jpg" alt="Fumaça em pó" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Temperos</span>
+
+                <h3>Fumaça em pó</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Dá sabor, cor e gosto de defumado a carnes, frangos, legumes e peixes.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/curry.jpg" alt="Curry indiano" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Temperos</span>
+
+                <h3>Curry indiano</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Mistura de especiarias que reúne os benefícios de cada uma delas, com cúrcuma.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/guarana.jpg" alt="Guaraná em pó" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Energéticos naturais</span>
+
+                <h3>Guaraná em pó</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Energético natural que ajuda a combater o cansaço físico e mental.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/cacau.jpg" alt="Cacau em pó puro" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Doces e confeitaria</span>
+
+                <h3>Cacau em pó puro</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para chocolates, bolos e bebidas, sem mistura.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/nozes.jpg" alt="Nozes" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Castanhas e frutas secas</span>
+
+                <h3>Nozes</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Ajudam a reduzir o colesterol ruim, cuidam do coração e fazem bem à memória.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/flor-de-sal.jpg" alt="Flor de sal" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Temperos</span>
+
+                <h3>Flor de sal</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Indicada como tempero e para finalizar pratos.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/linhaca.jpg" alt="Linhaça (marrom e dourada)" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Grãos e sementes</span>
+
+                <h3>Linhaça (marrom e dourada)</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Rica em ômega 3 e proteínas, ajuda a melhorar o colesterol e o controle do açúcar no sangue.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/gergelim-preto.jpg" alt="Gergelim preto" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Grãos e sementes</span>
+
+                <h3>Gergelim preto</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Ajuda a reduzir o colesterol e a cuidar do coração, além de estimular o funcionamento cerebral.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/gergelim-branco.jpg" alt="Gergelim branco" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Grãos e sementes</span>
+
+                <h3>Gergelim branco</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Rico em vitaminas do complexo B, ferro e fibras; bom para cabelos e ossos.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/chia.jpg" alt="Chia em grão" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Grãos e sementes</span>
+
+                <h3>Chia em grão</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Rica em fibras, ajuda o intestino, fortalece a imunidade e auxilia no controle da glicemia.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/ervilha.jpg" alt="Ervilha inteira" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Grãos e sementes</span>
+
+                <h3>Ervilha inteira</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Pouco calórica, rica em antioxidantes e sais minerais.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/hortela.jpg" alt="Hortelã desidratada" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Ervas e folhas</span>
+
+                <h3>Hortelã desidratada</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Ajuda na digestão e alivia cólicas, gases e náuseas.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/cafe.jpg" alt="Café em grão 100% arábica" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Cafés</span>
+
+                <h3>Café em grão 100% arábica</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para moer na hora e preparar o café do dia a dia.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/arroz-integral.jpg" alt="Arroz integral multigrãos" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Grãos e sementes</span>
+
+                <h3>Arroz integral multigrãos</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Mistura de grãos e sementes com mais fibras e nutrientes que o arroz comum.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/tempero-caipira.jpg" alt="Tempero caipira" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Temperos</span>
+
+                <h3>Tempero caipira</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Mistura pronta de açafrão, alho, cebola, cenoura, pimentão e salsa para o dia a dia.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/tempero-edu.jpg" alt="Tempero Edu Guedes premium" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Temperos</span>
+
+                <h3>Tempero Edu Guedes premium</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Mix de especiarias, alho, cebola, manjericão e cúrcuma para carnes e legumes.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/bebidas-vegetais.jpg" alt="Bebidas vegetais Silk" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Bebidas vegetais</span>
+
+                <h3>Bebidas vegetais Silk</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Alternativas ao leite de origem animal, em sabores como coco, amêndoa e castanha-de-caju.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/flocos-confeitos.jpg" alt="Flocos macios e confeitos" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Doces e confeitaria</span>
+
+                <h3>Flocos macios e confeitos</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para decorar e dar acabamento a bolos, doces e sobremesas.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/confeito-micanga.jpg" alt="Confeito miçanga de chocolate" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Doces e confeitaria</span>
+
+                <h3>Confeito miçanga de chocolate</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para decorar bolos, brigadeiros e sobremesas.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/cereja-calda.jpg" alt="Cereja em calda com cabo" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Doces e confeitaria</span>
+
+                <h3>Cereja em calda com cabo</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para decorar sobremesas, bolos e drinks.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/manjericao.jpg" alt="Manjericão desidratado" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Ervas e folhas</span>
+
+                <h3>Manjericão desidratado</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para temperar massas, molhos, carnes e saladas.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/sal-marinho.jpg" alt="Sal marinho fino e grosso" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Temperos</span>
+
+                <h3>Sal marinho fino e grosso</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Segundo a loja, é secado naturalmente ao sol, sem processo químico, e tem o iodo natural.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/louro-em-po.jpg" alt="Louro em pó" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Temperos</span>
+
+                <h3>Louro em pó</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Tempero para feijões, carnes e caldos.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/acafrao-paprica.jpg" alt="Açafrão, páprica e colorau" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Temperos</span>
+
+                <h3>Açafrão, páprica e colorau</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Dão cor e sabor a carnes, arroz e molhos. A páprica vem nas versões doce e defumada, e há colorau sem sal.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/tempero-tartaro.jpg" alt="Tempero tártaro" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Temperos</span>
+
+                <h3>Tempero tártaro</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Ideal para peixes, frutos do mar, carnes e aves; leva cebola, alho, cenoura, pimentão e salsa.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/tempero-feijao.jpg" alt="Tempero para feijão em flocos" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Temperos</span>
+
+                <h3>Tempero para feijão em flocos</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para dar sabor ao feijão do dia a dia.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/chimichurri.jpg" alt="Chimichurri barbecue" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Temperos</span>
+
+                <h3>Chimichurri barbecue</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Mistura de alho, cebola, pimentão, orégano, salsa, tomate em flocos e cúrcuma, para churrasco e carnes.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/arroz-com-casca.jpg" alt="Arroz com casca" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Grãos e sementes</span>
+
+                <h3>Arroz com casca</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Vendido a granel, para quem prefere o grão com casca.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/ameixa.jpg" alt="Ameixa sem caroço" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Frutas secas</span>
+
+                <h3>Ameixa sem caroço</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Fruta seca vendida a granel, pronta para comer ou usar em receitas.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/cha-leao-prateleira.jpg" alt="Chás Leão" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Chás</span>
+
+                <h3>Chás Leão</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Caixas de chá em vários sabores, como erva-doce, hortelã, camomila, capim-cidreira e matte.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/gelatinas-zero.jpg" alt="Gelatinas zero Dr. Oetker" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Doces e confeitaria</span>
+
+                <h3>Gelatinas zero Dr. Oetker</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Opções zero açúcar nos sabores uva, abacaxi e cereja.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/geleias-queensberry.jpg" alt="Geleias gourmet Queensberry" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Geleias</span>
+
+                <h3>Geleias gourmet Queensberry</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Geleias de damasco e goiaba (linha diet) e versões gourmet de alho caramelizado e cebola caramelizada com pimenta.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/vinagre-maca.jpg" alt="Vinagre de maçã orgânico" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Vinagres</span>
+
+                <h3>Vinagre de maçã orgânico</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Vinagre de fruta maçã em garrafas de 500 ml, para temperar saladas e preparar receitas.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/oleo-coco.jpg" alt="Óleo de coco Copra" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Óleos</span>
+
+                <h3>Óleo de coco Copra</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Óleo de coco em frasco de 250 ml, para usar em receitas.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/oleos-vegetais.jpg" alt="Óleos vegetais" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Óleos</span>
+
+                <h3>Óleos vegetais</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Óleos de buriti, babosa, mamona e rícino, entre outros; consulte o rótulo de cada um para a indicação de uso.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/oleos-gotas.jpg" alt="Óleos e extratos em gotas" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Óleos</span>
+
+                <h3>Óleos e extratos em gotas</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Frascos conta-gotas, como rosa mosqueta e óleo ozonizado; consulte a loja sobre o uso de cada um.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/sabonetes.jpg" alt="Sabonetes naturais" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Cuidados</span>
+
+                <h3>Sabonetes naturais</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Sabonetes artesanais em barra, como enxofre e aroeira; cada um traz sua indicação no rótulo.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/creatina.jpg" alt="Creatina" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Suplementos</span>
+
+                <h3>Creatina</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Potes de creatina de marcas como Max, Probiótica e Plant Power, para quem treina.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/glutamina-beta-alanina.jpg" alt="Glutamina e beta-alanina" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Suplementos</span>
+
+                <h3>Glutamina e beta-alanina</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Suplementos para quem treina; consulte um profissional antes de usar.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/vitamina-b12.jpg" alt="Vitamina B12 (metilcobalamina)" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Suplementos</span>
+
+                <h3>Vitamina B12 (metilcobalamina)</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Suplemento de vitamina B12 em cápsulas; consulte um profissional de saúde antes de usar.</p>
+
+              </div>
+
+            </article>
+
+            <article class="produto-card">
+
+              <img src="img/loja/percarbonato.jpg" alt="Percarbonato de sódio" loading="lazy">
+
+              <div class="produto-info">
+
+                <span class="produto-tag">Limpeza</span>
+
+                <h3>Percarbonato de sódio</h3>
+
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Alvejante ecológico e desinfetante para usos domésticos, segundo a loja.</p>
+
+              </div>
+
+            </article>
+
+            <!-- OUTROS PRODUTOS -->
+
+            <article class="produto-card">
+
+              <img
+                src="img/produtos-naturais.png"
+                alt="Produtos naturais"
+              >
+
+              <div class="produto-info">
+
+                <span class="produto-tag">
+                  Variedade
+                </span>
+
+                <h3>
+                  Outros produtos
+                </h3>
+
+                <p>
+                  Outras opções complementam a variedade
+                  encontrada no Empório dos Cereais.
+                </p>
+
+              
+                <p class="produto-beneficio"><strong>Ajuda em:</strong> Temperos, cereais, grãos e itens naturais para todas as refeições.</p>
+
+              </div>
+
+            </article>
+
+          </div>
+
+
+          
+          <h3 class="galeria-titulo">Mais da loja</h3>
+          <div class="galeria-loja">
+            <img src="img/loja/corredor.jpg" alt="Corredor de produtos a granel" loading="lazy">
+            <img src="img/loja/extratos.jpg" alt="Extratos e tinturas" loading="lazy">
+            <img src="img/loja/cha-leao.jpg" alt="Chás e vitaminas" loading="lazy">
+            <img src="img/loja/vinagres.jpg" alt="Vinagres e azeites" loading="lazy">
+            <img src="img/loja/cremes.jpg" alt="Cremes de castanhas e pastas" loading="lazy">
+            <img src="img/loja/suplementos.jpg" alt="Suplementos" loading="lazy">
+            <img src="img/loja/loja-corredor-2.jpg" alt="Prateleiras de produtos a granel" loading="lazy">
+            <img src="img/loja/loja-bebidas-vegetais.jpg" alt="Bebidas vegetais na prateleira" loading="lazy">
+            <img src="img/loja/loja-geleias-chocolates.jpg" alt="Geleias e chocolates" loading="lazy">
+          </div>
+
+          <div class="aviso-produtos">
+
+            <strong>
+              Disponibilidade dos produtos
+            </strong>
+
+            <p>
+              As indicações de uso seguem o que a loja informa e o uso tradicional de cada produto, e não substituem orientação médica. Os produtos disponíveis podem variar
+              conforme o estoque e as novas mercadorias
+              recebidas pelo estabelecimento.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==============================
+         NOVIDADES
+    =============================== -->
+
+    <section
+      class="panel"
+      id="panel-novidades"
+    >
+
+      <div class="section-pad">
+
+        <div class="container">
+
+          <div class="section-head">
+
+            <span class="eyebrow">
+              Novidades
+            </span>
+
+            <h2>
+              Sempre buscando novidades para você.
+            </h2>
+
+            <p>
+              O Empório dos Cereais acompanha as
+              novidades do mercado de produtos naturais
+              e busca renovar frequentemente as opções
+              disponíveis na loja.
+            </p>
+
+          </div>
+
+
+          <div class="novidades-grid">
+
+            <div class="novidade-card">
+
+              <span class="numero">
+                01
+              </span>
+
+              <h3>
+                Reposição semanal
+              </h3>
+
+              <p>
+                Novas mercadorias costumam chegar
+                semanalmente ao Empório,
+                principalmente às quintas-feiras.
+              </p>
+
+            </div>
+
+
+            <div class="novidade-card">
+
+              <span class="numero">
+                02
+              </span>
+
+              <h3>
+                Novos produtos
+              </h3>
+
+              <p>
+                A loja acompanha produtos que estão
+                ganhando espaço no mercado para ampliar
+                a variedade oferecida aos clientes.
+              </p>
+
+            </div>
+
+
+            <div class="novidade-card">
+
+              <span class="numero">
+                03
+              </span>
+
+              <h3>
+                Acompanhe as novidades
+              </h3>
+
+              <p>
+                As novidades e os produtos disponíveis
+                também são divulgados pelas redes sociais
+                e pelo Status do WhatsApp.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- FOTO DE NOVIDADES -->
+
+          <div class="novidade-foto">
+
+            <img
+              src="img/novidades.png"
+              alt="Variedade de produtos do Empório dos Cereais"
+            >
+
+          </div>
+
+
+          <div class="aviso-produtos">
+
+            <strong>
+              Novidades toda semana
+            </strong>
+
+            <p>
+              A disponibilidade pode mudar conforme
+              a reposição e a chegada de novas mercadorias.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==============================
+         CONTATO
+    =============================== -->
+
+    <section
+      class="panel"
+      id="panel-contato"
+    >
+
+      <div class="section-pad">
+
+        <div class="container">
+
+          <div class="section-head">
+
+            <span class="eyebrow">
+              Contato
+            </span>
+
+            <h2>
+              Visite o Empório dos Cereais.
+            </h2>
+
+            <p>
+              Estamos em Parintins, Amazonas.
+              Consulte nossa localização para
+              encontrar o estabelecimento.
+            </p>
+
+          </div>
+
+
+          <div class="contato-grid">
+
+
+            <div class="contato-card">
+
+              <h3>Endereço</h3>
+
+              <p>
+                Rua Paraíba, 3000<br>
+                Emílio Moreira<br>
+                Parintins - AM
+              </p>
+
+              <a
+                class="btn btn-outline"
+                href="https://maps.app.goo.gl/hSKjWRVpHq873CS46"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Como chegar
+              </a>
+
+            </div>
+
+
+            <div class="contato-card">
+
+              <h3>Contato</h3>
+
+              <p>
+                Entre em contato com o estabelecimento
+                para consultar produtos e disponibilidade.
+              </p>
+
+            </div>
+
+
+            <div class="contato-card">
+
+              <h3>Redes sociais</h3>
+
+              <p>
+                Acompanhe os produtos e novidades
+                divulgados pelo estabelecimento.
+              </p>
+
+              <div class="social-links">
+
+                <a href="https://www.instagram.com/emporiiodoscereaiis/" target="_blank" rel="noopener noreferrer">Instagram: @emporiiodoscereaiis</a>
+                <a href="https://www.facebook.com/search/top?q=Emporiodoscereais%20Cereais" target="_blank" rel="noopener noreferrer">Facebook: Emporiodoscereais Cereais</a>
+                <span>WhatsApp</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="mapa-box">
+
+            <div>
+
+              <span class="eyebrow">
+                Localização
+              </span>
+
+              <h2>
+                Empório dos Cereais
+              </h2>
+
+              <p>
+                Rua Paraíba, 3000,
+                Emílio Moreira,
+                Parintins - AM.
+              </p>
+
+            </div>
+
+            <a
+              class="btn btn-primary"
+              href="https://maps.app.goo.gl/hSKjWRVpHq873CS46"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Abrir no Google Maps
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ==============================
+       RODAPÉ
+  =============================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <div class="footer-brand">
+
+            <img
+              src="img/logo.png"
+              alt="Logo do Empório dos Cereais"
+            >
+
+            <div>
+              <strong>Empório dos Cereais</strong>
+              <span>Produtos Naturais</span>
+            </div>
+
+          </div>
+
+          <p class="desc">
+            Variedade em produtos naturais
+            e regionais em Parintins, Amazonas.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <h5>Navegação</h5>
+
+          <ul>
+
+            <li>
+              <button data-goto="inicio">
+                Início
+              </button>
+            </li>
+
+            <li>
+              <button data-goto="sobre">
+                Sobre
+              </button>
+            </li>
+
+            <li>
+              <button data-goto="produtos">
+                Produtos
+              </button>
+            </li>
+
+            <li>
+              <button data-goto="novidades">
+                Novidades
+              </button>
+            </li>
+
+            <li>
+              <button data-goto="contato">
+                Contato
+              </button>
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <div>
+
+          <h5>
+            Onde estamos
+          </h5>
+
+          <p class="footer-address">
+            Rua Paraíba, 3000<br>
+            Emílio Moreira<br>
+            Parintins - AM
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © 2026 Empório dos Cereais.
+          Todos os direitos reservados.
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ==============================
+       LIGHTBOX
+       Foto do produto em tela cheia,
+       sem corte
+  =============================== -->
+
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Foto do produto ampliada"
+  >
+
+    <button
+      class="lightbox-fechar"
+      id="lightbox-fechar"
+      aria-label="Fechar foto ampliada"
+    >
+      &times;
+    </button>
+
+    <img
+      id="lightbox-img"
+      src=""
+      alt=""
+    >
+
+  </div>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
