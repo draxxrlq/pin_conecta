@@ -460,22 +460,21 @@
 
     </section>
 
-    <!-- ==============================
-         PRODUTOS (EXPERIÊNCIA APP MOBILE)
+<!-- ==============================
+         PRODUTOS (CATÁLOGO COMPLETO)
     =============================== -->
 
     <section class="panel" id="panel-produtos">
 
       <div class="shop-container">
 
-        <!-- CABEÇALHO DO SHOPPING COM BUSCA E CARRINHO -->
+        <!-- TOPO: TÍTULO E CARRINHO -->
         <div class="shop-topbar">
           <div>
             <span class="shop-eyebrow">Produtos naturais</span>
             <h2 class="shop-title">Mais saúde e bem-estar para o seu dia.</h2>
           </div>
 
-          <!-- Botão do Carrinho Flutuante / Topo -->
           <button class="shop-cart-trigger" id="btn-abrir-carrinho" aria-label="Abrir meu carrinho">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="9" cy="21" r="1"></circle>
@@ -495,198 +494,48 @@
           <input
             type="search"
             id="input-busca-produtos"
-            placeholder="Buscar produtos..."
+            placeholder="Buscar ervas, grãos, temperos..."
             aria-label="Buscar produtos"
             autocomplete="off"
           >
         </div>
 
-        <!-- PÍLULAS DE CATEGORIAS -->
+        <!-- CATEGORIAS EM PÍLULAS (TODAS AS SEÇÕES DA LOJA) -->
         <div class="shop-categories" id="shop-categories" role="tablist">
-          <button class="cat-pill active" data-cat="todos">
-            <span>Todos</span>
-          </button>
-          <button class="cat-pill" data-cat="ervas">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12c0-3.3 1.6-6.2 4-8"></path><path d="M12 2v20"></path></svg>
-            <span>Ervas</span>
-          </button>
-          <button class="cat-pill" data-cat="castanhas">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 12c1.5 2 4.5 2 6 0"></path></svg>
-            <span>Castanhas</span>
-          </button>
-          <button class="cat-pill" data-cat="graos">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v18M18 3v18M12 8v13M12 3v2"></path></svg>
-            <span>Grãos</span>
-          </button>
-          <button class="cat-pill" data-cat="temperos">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"></path></svg>
-            <span>Temperos</span>
-          </button>
-          <button class="cat-pill" data-cat="chas">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
-            <span>Chás</span>
-          </button>
+          <button class="cat-pill active" data-cat="todos">Todos</button>
+          <button class="cat-pill" data-cat="ervas">Ervas e Flores</button>
+          <button class="cat-pill" data-cat="temperos">Temperos</button>
+          <button class="cat-pill" data-cat="graos">Grãos e Sementes</button>
+          <button class="cat-pill" data-cat="castanhas">Castanhas e Frutas</button>
+          <button class="cat-pill" data-cat="chas-cafes">Chás e Cafés</button>
+          <button class="cat-pill" data-cat="suplementos">Suplementos</button>
+          <button class="cat-pill" data-cat="emporio">Empório e Cuidados</button>
         </div>
 
-        <!-- TÍTULO DA SEÇÃO -->
+        <!-- HEADER DA LISTA -->
         <div class="shop-grid-header">
-          <h3>Produtos em destaque</h3>
-          <span class="shop-grid-count" id="shop-itens-encontrados">Disponíveis</span>
+          <h3>Variedade da loja</h3>
+          <span class="shop-grid-count" id="shop-itens-encontrados">Carregando produtos...</span>
         </div>
 
-        <!-- GRID COM 2 COLUNAS MOBILE -->
-        <div class="shop-grid" id="shop-grid">
+        <!-- GRID 2 COLUNAS (POPULADO AUTOMATICAMENTE) -->
+        <div class="shop-grid" id="shop-grid"></div>
 
-          <!-- HIBISCO -->
-          <article class="shop-card" data-cat="ervas chas" data-nome="hibisco flor de hibisco cha">
-            <div class="shop-card-media" onclick="abrirDetalheProduto('hibisco')">
-              <img src="img/hibisco.png" alt="Flor de Hibisco" loading="lazy">
-            </div>
-            <div class="shop-card-body">
-              <span class="shop-card-tag">Ervas e Flores</span>
-              <h4 onclick="abrirDetalheProduto('hibisco')">Hibisco</h4>
-              <p class="shop-card-desc">Rico em antioxidantes e ação diurética.</p>
-              <div class="shop-card-footer">
-                <span class="shop-card-unit">100g (a granel)</span>
-                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Hibisco', '100g', 'img/hibisco.png')" aria-label="Adicionar Hibisco">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- CASTANHA-DO-BRASIL -->
-          <article class="shop-card" data-cat="castanhas" data-nome="castanha do brasil castanha do para">
-            <div class="shop-card-media" onclick="abrirDetalheProduto('castanha-brasil')">
-              <img src="img/castanhas.png" alt="Castanha do Brasil" loading="lazy">
-            </div>
-            <div class="shop-card-body">
-              <span class="shop-card-tag">Castanhas</span>
-              <h4 onclick="abrirDetalheProduto('castanha-brasil')">Castanha-do-Brasil</h4>
-              <p class="shop-card-desc">Rica em selênio, energia e gorduras boas.</p>
-              <div class="shop-card-footer">
-                <span class="shop-card-unit">200g (selecionada)</span>
-                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Castanha-do-Brasil', '200g', 'img/castanhas.png')" aria-label="Adicionar Castanha-do-Brasil">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- CAVALINHA -->
-          <article class="shop-card" data-cat="ervas chas" data-nome="cavalinha cha diuretico">
-            <div class="shop-card-media" onclick="abrirDetalheProduto('cavalinha')">
-              <img src="img/cavalinha.png" alt="Cavalinha em folhas" loading="lazy">
-            </div>
-            <div class="shop-card-body">
-              <span class="shop-card-tag">Ervas e Folhas</span>
-              <h4 onclick="abrirDetalheProduto('cavalinha')">Cavalinha</h4>
-              <p class="shop-card-desc">Tradicionalmente usada pela ação diurética.</p>
-              <div class="shop-card-footer">
-                <span class="shop-card-unit">100g (a granel)</span>
-                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Cavalinha', '100g', 'img/cavalinha.png')" aria-label="Adicionar Cavalinha">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- CHIA EM GRÃO -->
-          <article class="shop-card" data-cat="graos" data-nome="chia em grao sementes fibras">
-            <div class="shop-card-media" onclick="abrirDetalheProduto('chia')">
-              <img src="img/loja/chia.jpg" alt="Chia em grão" loading="lazy">
-            </div>
-            <div class="shop-card-body">
-              <span class="shop-card-tag">Grãos e Sementes</span>
-              <h4 onclick="abrirDetalheProduto('chia')">Chia em grão</h4>
-              <p class="shop-card-desc">Rica em fibras, saciedade e ômega 3.</p>
-              <div class="shop-card-footer">
-                <span class="shop-card-unit">A granel</span>
-                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Chia em grão', 'A granel', 'img/loja/chia.jpg')" aria-label="Adicionar Chia">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- LINHAÇA -->
-          <article class="shop-card" data-cat="graos" data-nome="linhaca dourada marrom sementes">
-            <div class="shop-card-media" onclick="abrirDetalheProduto('linhaca')">
-              <img src="img/loja/linhaca.jpg" alt="Linhaça marrom e dourada" loading="lazy">
-            </div>
-            <div class="shop-card-body">
-              <span class="shop-card-tag">Grãos e Sementes</span>
-              <h4 onclick="abrirDetalheProduto('linhaca')">Linhaça selecionada</h4>
-              <p class="shop-card-desc">Fonte de fibras e controle da glicemia.</p>
-              <div class="shop-card-footer">
-                <span class="shop-card-unit">A granel</span>
-                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Linhaça selecionada', 'A granel', 'img/loja/linhaca.jpg')" aria-label="Adicionar Linhaça">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- SAL ROSA DO HIMALAIA -->
-          <article class="shop-card" data-cat="temperos" data-nome="sal rosa himalaia tempero">
-            <div class="shop-card-media" onclick="abrirDetalheProduto('sal-rosa')">
-              <img src="img/loja/sal-rosa.jpg" alt="Sal rosa do Himalaia" loading="lazy">
-            </div>
-            <div class="shop-card-body">
-              <span class="shop-card-tag">Temperos</span>
-              <h4 onclick="abrirDetalheProduto('sal-rosa')">Sal rosa do Himalaia</h4>
-              <p class="shop-card-desc">Rico em minerais para o dia a dia.</p>
-              <div class="shop-card-footer">
-                <span class="shop-card-unit">Fino e Grosso</span>
-                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Sal rosa do Himalaia', 'Fino/Grosso', 'img/loja/sal-rosa.jpg')" aria-label="Adicionar Sal rosa">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- CURRY INDIANO -->
-          <article class="shop-card" data-cat="temperos" data-nome="curry indiano tempero especiarias">
-            <div class="shop-card-media" onclick="abrirDetalheProduto('curry')">
-              <img src="img/loja/curry.jpg" alt="Curry indiano" loading="lazy">
-            </div>
-            <div class="shop-card-body">
-              <span class="shop-card-tag">Temperos</span>
-              <h4 onclick="abrirDetalheProduto('curry')">Curry indiano</h4>
-              <p class="shop-card-desc">Mix de especiarias puras e cúrcuma.</p>
-              <div class="shop-card-footer">
-                <span class="shop-card-unit">A granel</span>
-                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Curry indiano', 'A granel', 'img/loja/curry.jpg')" aria-label="Adicionar Curry">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- NOZES -->
-          <article class="shop-card" data-cat="castanhas" data-nome="nozes frutas secas oleaginosas">
-            <div class="shop-card-media" onclick="abrirDetalheProduto('nozes')">
-              <img src="img/loja/nozes.jpg" alt="Nozes" loading="lazy">
-            </div>
-            <div class="shop-card-body">
-              <span class="shop-card-tag">Castanhas</span>
-              <h4 onclick="abrirDetalheProduto('nozes')">Nozes chilenas</h4>
-              <p class="shop-card-desc">Cuidado cardiovascular e memória ativa.</p>
-              <div class="shop-card-footer">
-                <span class="shop-card-unit">A granel</span>
-                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Nozes chilenas', 'A granel', 'img/loja/nozes.jpg')" aria-label="Adicionar Nozes">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                </button>
-              </div>
-            </div>
-          </article>
-
+        <!-- MAIS DA LOJA (FOTOS DO ESPAÇO FÍSICO) -->
+        <h3 class="galeria-titulo">Mais da nossa loja</h3>
+        <div class="galeria-loja">
+          <img src="img/loja/corredor.jpg" alt="Corredor de produtos a granel" loading="lazy">
+          <img src="img/loja/extratos.jpg" alt="Extratos e tinturas" loading="lazy">
+          <img src="img/loja/cha-leao.jpg" alt="Chás e vitaminas" loading="lazy">
+          <img src="img/loja/vinagres.jpg" alt="Vinagres e azeites" loading="lazy">
+          <img src="img/loja/cremes.jpg" alt="Cremes de castanhas e pastas" loading="lazy">
+          <img src="img/loja/suplementos.jpg" alt="Suplementos" loading="lazy">
         </div>
 
         <div class="aviso-produtos">
           <strong>Atendimento direto no balcão</strong>
           <p>
-            Trabalhamos com pesagem fracionada a granel na quantidade que desejar. Adicione seus itens à lista e envie para confirmação de estoque e valores via WhatsApp.
+            Trabalhamos com pesagem fracionada na quantidade desejada. Adicione os itens à sua lista e finalize para consultar peso exato e disponibilidade no WhatsApp da loja.
           </p>
         </div>
 
@@ -694,12 +543,9 @@
 
     </section>
 
-    <!-- ==============================
-         MODAL: DETALHES DO PRODUTO (TELA 2 DA FOTO)
-    =============================== -->
+    <!-- MODAL: DETALHES DO PRODUTO -->
     <div class="product-modal-backdrop" id="modal-detalhes" aria-hidden="true">
       <div class="product-modal-sheet">
-        
         <div class="modal-nav">
           <button class="modal-close-btn" id="btn-fechar-detalhes" aria-label="Fechar detalhes">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
@@ -713,27 +559,25 @@
           </div>
 
           <div class="modal-info-content">
-            <span class="modal-tag" id="detalhe-tag">Ervas e Flores</span>
+            <span class="modal-tag" id="detalhe-tag">Categoria</span>
             <h2 id="detalhe-nome">Nome do Produto</h2>
-            <p class="modal-desc" id="detalhe-desc">Descrição dos benefícios tradicionais e usos recomendados.</p>
+            <p class="modal-desc" id="detalhe-desc">Benefícios e usos recomendados.</p>
 
-            <!-- Selos de qualidade autênticos (substituindo estrelas fakes) -->
             <div class="modal-badges-row">
               <div class="badge-item">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12c0-3.3 1.6-6.2 4-8"></path></svg>
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12c0-3.3 1.6-6.2 4-8"></path></svg>
                 <span>100% natural</span>
               </div>
               <div class="badge-item">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
                 <span>Sem aditivos</span>
               </div>
               <div class="badge-item">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
                 <span>A granel</span>
               </div>
             </div>
 
-            <!-- Seletor de quantidade -->
             <div class="modal-qty-box">
               <span>Quantidade:</span>
               <div class="qty-control">
@@ -750,16 +594,12 @@
             Adicionar à lista
           </button>
         </div>
-
       </div>
     </div>
 
-    <!-- ==============================
-         DRAWER: MEU CARRINHO (TELA 3 DA FOTO)
-    =============================== -->
+    <!-- DRAWER: MEU CARRINHO -->
     <div class="cart-backdrop" id="cart-drawer" aria-hidden="true">
       <div class="cart-sheet">
-
         <div class="cart-header">
           <button class="cart-back-btn" id="btn-fechar-carrinho" aria-label="Voltar para a loja">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
@@ -767,9 +607,7 @@
           <h3>Meu carrinho</h3>
         </div>
 
-        <div class="cart-items-list" id="cart-items-container">
-          <!-- Os itens serão gerados dinamicamente via JavaScript -->
-        </div>
+        <div class="cart-items-list" id="cart-items-container"></div>
 
         <div class="cart-footer">
           <div class="cart-summary">
@@ -778,7 +616,7 @@
               <strong id="cart-total-itens">0 selecionados</strong>
             </div>
             <div class="summary-note">
-              <span>Valores e peso exato conferidos no balcão de Parintins</span>
+              <span>Peso exato conferido no balcão em Parintins</span>
             </div>
           </div>
 
@@ -786,7 +624,6 @@
             Enviar lista pelo WhatsApp
           </button>
         </div>
-
       </div>
     </div>
     
