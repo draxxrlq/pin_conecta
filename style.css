@@ -2299,3 +2299,110 @@ body.lightbox-aberto {
   padding: 30px 10px;
   font-size: 14px;
 }
+
+/* =============================================
+   BARRA DE NAVEGAÇÃO INFERIOR MOBILE (APP)
+============================================= */
+
+.mobile-bottom-bar {
+  display: none; /* No computador fica oculto */
+}
+
+@media (max-width: 900px) {
+  /* Espaço no rodapé para a barra fixa não cobrir conteúdo */
+  body {
+    padding-bottom: 76px;
+  }
+
+  .mobile-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 68px;
+    background: rgba(255, 252, 247, 0.96);
+    backdrop-filter: blur(14px);
+    border-top: 1px solid var(--borda);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 6px 10px 10px;
+    z-index: 2500;
+    box-shadow: 0 -4px 20px rgba(65, 37, 23, 0.08);
+  }
+
+  .bottom-nav-item {
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex: 1;
+    color: var(--cinza);
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.15s ease;
+    padding: 4px 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .bottom-nav-item span {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .bottom-nav-item svg {
+    transition: stroke 0.2s ease;
+  }
+
+  /* Estado Selecionado/Ativo */
+  .bottom-nav-item.active {
+    color: var(--laranja);
+  }
+
+  .bottom-nav-item.active span {
+    font-weight: 800;
+  }
+
+  .bottom-nav-item.active svg {
+    stroke: var(--laranja);
+  }
+
+  .bottom-nav-item:active {
+    transform: scale(0.92);
+  }
+
+  /* Ícone com Badge de Notificação/Carrinho */
+  .bottom-nav-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bottom-cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: var(--laranja);
+    color: var(--branco);
+    font-size: 10px;
+    font-weight: 800;
+    min-width: 17px;
+    height: 17px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3px;
+    box-shadow: 0 2px 6px rgba(216, 106, 28, 0.4);
+  }
+
+  /* Oculta o hamburguer e menu antigo */
+  .burger,
+  #mobile-menu {
+    display: none !important;
+  }
+}
