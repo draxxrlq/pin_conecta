@@ -248,103 +248,147 @@ if (videoHero && btnSom) {
 }
 
 /* =============================================
-   CATÁLOGO E CARRINHO MOBILE
+   CATÁLOGO COMPLETO COM TODOS OS PRODUTOS
 ============================================= */
 
-// Banco simples de detalhes
-const produtosInfo = {
-  'hibisco': {
-    nome: 'Hibisco',
-    tag: 'Ervas e Flores',
-    desc: 'Flor rica em antioxidantes, tradicionalmente consumida em chás pela ação diurética e sabor levemente cítrico.',
-    img: 'img/hibisco.png',
-    unit: '100g'
-  },
-  'castanha-brasil': {
-    nome: 'Castanha-do-Brasil',
-    tag: 'Castanhas',
-    desc: 'Castanhas selecionadas da Amazônia, fontes naturais de selênio, gorduras benéficas e proteínas.',
-    img: 'img/castanhas.png',
-    unit: '200g'
-  },
-  'cavalinha': {
-    nome: 'Cavalinha',
-    tag: 'Ervas e Folhas',
-    desc: 'Erva tradicionalmente preparada em infusão para retenção de líquidos e reposição de minerais.',
-    img: 'img/cavalinha.png',
-    unit: '100g'
-  },
-  'chia': {
-    nome: 'Chia em grão',
-    tag: 'Grãos e Sementes',
-    desc: 'Sementes com alta concentração de fibras solúveis, ideais para digestão e saciedade no dia a dia.',
-    img: 'img/loja/chia.jpg',
-    unit: 'A granel'
-  },
-  'linhaca': {
-    nome: 'Linhaça selecionada',
-    tag: 'Grãos e Sementes',
-    desc: 'Rica em ômega 3 vegetal, pode ser consumida em grãos ou triturada no preparo de refeições.',
-    img: 'img/loja/linhaca.jpg',
-    unit: 'A granel'
-  },
-  'sal-rosa': {
-    nome: 'Sal rosa do Himalaia',
-    tag: 'Temperos',
-    desc: 'Sal puro com minerais naturais preservados, disponível nas versões moído fino e grosso.',
-    img: 'img/loja/sal-rosa.jpg',
-    unit: 'Fino/Grosso'
-  },
-  'curry': {
-    nome: 'Curry indiano',
-    tag: 'Temperos',
-    desc: 'Mix aromático de especiarias puras e cúrcuma para conferir cor e sabor aos preparos culinários.',
-    img: 'img/loja/curry.jpg',
-    unit: 'A granel'
-  },
-  'nozes': {
-    nome: 'Nozes chilenas',
-    tag: 'Castanhas',
-    desc: 'Nozes de qualidade superior, recomendadas para a saúde cardiovascular e lanches práticos.',
-    img: 'img/loja/nozes.jpg',
-    unit: 'A granel'
-  }
-};
+const catalogoProdutos = [
+  // ERVAS E FLORES
+  { id: 'cavalinha', nome: 'Cavalinha', cat: 'ervas', tag: 'Ervas e folhas', desc: 'Tradicionalmente usada em chás pela ação diurética e por ser rica em silício.', img: 'img/cavalinha.png', unit: 'A granel' },
+  { id: 'hibisco', nome: 'Hibisco', cat: 'ervas', tag: 'Ervas e flores', desc: 'Flor de hibisco muito consumida em chá, associada à ação diurética e antioxidante.', img: 'img/hibisco.png', unit: 'A granel' },
+  { id: 'catuaba', nome: 'Catuaba', cat: 'ervas', tag: 'Ervas e cascas', desc: 'Tradicionalmente consumida como tônico natural para dar mais disposição.', img: 'img/catuaba.png', unit: 'Embalada' },
+  { id: 'cascas-ervas', nome: 'Cascas e ervas variadas', cat: 'ervas', tag: 'Ervas e cascas', desc: 'Diversas opções de cascas e ervas comercializadas em embalagens tradicionais.', img: 'img/cascas-ervas.png', unit: 'Embaladas' },
+  { id: 'ervas-embaladas', nome: 'Ervas medicinais embaladas', cat: 'ervas', tag: 'Ervas', desc: 'Seleção de chás e ervas secas prontas para infusões do dia a dia.', img: 'img/ervas-embaladas.png', unit: 'Embaladas' },
+  { id: 'hortela', nome: 'Hortelã desidratada', cat: 'ervas', tag: 'Ervas e folhas', desc: 'Auxilia na digestão e proporciona alívio para gases e sensação de peso.', img: 'img/loja/hortela.jpg', unit: 'A granel' },
+  { id: 'manjericao', nome: 'Manjericão desidratado', cat: 'ervas', tag: 'Ervas e folhas', desc: 'Aroma fresco para temperar molhos, massas, carnes e saladas.', img: 'img/loja/manjericao.jpg', unit: 'A granel' },
 
+  // CASTANHAS E FRUTAS SECAS
+  { id: 'castanhas', nome: 'Castanhas e derivados', cat: 'castanhas', tag: 'Castanhas', desc: 'Castanha-do-Brasil, castanha-de-caju, farinhas e derivados ricos em gorduras boas e selênio.', img: 'img/castanhas.png', unit: 'Fracionada' },
+  { id: 'nozes', nome: 'Nozes chilenas', cat: 'castanhas', tag: 'Castanhas e frutas', desc: 'Ajudam a controlar o colesterol, cuidam do coração e estimulam a memória.', img: 'img/loja/nozes.jpg', unit: 'A granel' },
+  { id: 'ameixa', nome: 'Ameixa sem caroço', cat: 'castanhas', tag: 'Frutas secas', desc: 'Fruta seca rica em fibras digestivas, pronta para consumo ou receitas.', img: 'img/loja/ameixa.jpg', unit: 'A granel' },
+
+  // GRÃOS, SEMENTES E FIBRAS
+  { id: 'fibras', nome: 'Fibras e farinhas integrais', cat: 'graos', tag: 'Farinhas e fibras', desc: 'Variedades que auxiliam no trânsito intestinal e aumentam a saciedade das refeições.', img: 'img/fibras.png', unit: 'A granel' },
+  { id: 'linhaca', nome: 'Linhaça marrom e dourada', cat: 'graos', tag: 'Grãos e sementes', desc: 'Rica em ômega 3 vegetal e fibras benéficas ao controle do açúcar no sangue.', img: 'img/loja/linhaca.jpg', unit: 'A granel' },
+  { id: 'chia', nome: 'Chia em grão', cat: 'graos', tag: 'Grãos e sementes', desc: 'Sementes com alta densidade de fibras, fortalecem o sistema imune e a saciedade.', img: 'img/loja/chia.jpg', unit: 'A granel' },
+  { id: 'gergelim-preto', nome: 'Gergelim preto', cat: 'graos', tag: 'Grãos e sementes', desc: 'Auxilia no cuidado do coração e estimula a atividade cognitiva.', img: 'img/loja/gergelim-preto.jpg', unit: 'A granel' },
+  { id: 'gergelim-branco', nome: 'Gergelim branco', cat: 'graos', tag: 'Grãos e sementes', desc: 'Rico em cálcio vegetal, ferro e vitaminas do complexo B.', img: 'img/loja/gergelim-branco.jpg', unit: 'A granel' },
+  { id: 'ervilha', nome: 'Ervilha inteira', cat: 'graos', tag: 'Grãos e sementes', desc: 'Baixo teor calórico, rica em proteínas vegetais, antioxidantes e minerais.', img: 'img/loja/ervilha.jpg', unit: 'A granel' },
+  { id: 'arroz-integral', nome: 'Arroz integral multigrãos', cat: 'graos', tag: 'Grãos e sementes', desc: 'Blend especial com cereais nutritivos que enriquecem o almoço diário.', img: 'img/loja/arroz-integral.jpg', unit: 'A granel' },
+  { id: 'arroz-casca', nome: 'Arroz com casca', cat: 'graos', tag: 'Grãos e sementes', desc: 'Grãos naturais com casca preservada para dietas integrais.', img: 'img/loja/arroz-com-casca.jpg', unit: 'A granel' },
+
+  // TEMPEROS E ESPECIARIAS
+  { id: 'canelas', nome: 'Canela em pau e em pó', cat: 'temperos', tag: 'Especiarias', desc: 'Sabor marcante para receitas, digestão suave e compostos antioxidantes.', img: 'img/canelas.png', unit: 'Pau / Pó' },
+  { id: 'sal-rosa', nome: 'Sal rosa do Himalaia', cat: 'temperos', tag: 'Temperos', desc: 'Sal não refinado, preservando dezenas de microminerais e potássio.', img: 'img/loja/sal-rosa.jpg', unit: 'Fino / Grosso' },
+  { id: 'flor-de-sal', nome: 'Flor de sal', cat: 'temperos', tag: 'Temperos', desc: 'Cristais nobres para finalização de pratos e realce de sabor.', img: 'img/loja/flor-de-sal.jpg', unit: 'Embalada' },
+  { id: 'sal-marinho', nome: 'Sal marinho integral', cat: 'temperos', tag: 'Temperos', desc: 'Secado naturalmente sem processos químicos agressivos.', img: 'img/loja/sal-marinho.jpg', unit: 'Fino / Grosso' },
+  { id: 'noz-moscada', nome: 'Noz-moscada', cat: 'temperos', tag: 'Especiarias', desc: 'Aroma quente e adocicado para molhos brancos, purês e preparos tradicionais.', img: 'img/loja/noz-moscada.jpg', unit: 'Unidade / Pó' },
+  { id: 'fumaca-em-po', nome: 'Fumaça em pó', cat: 'temperos', tag: 'Temperos', desc: 'Proporciona aroma e notas defumadas deliciosas a legumes, carnes e queijos.', img: 'img/loja/fumaca-em-po.jpg', unit: 'A granel' },
+  { id: 'curry', nome: 'Curry indiano', cat: 'temperos', tag: 'Temperos', desc: 'Mistura clássica de cúrcuma com especiarias orientais aromáticas.', img: 'img/loja/curry.jpg', unit: 'A granel' },
+  { id: 'tempero-caipira', nome: 'Tempero caipira', cat: 'temperos', tag: 'Temperos', desc: 'Combinação caseira de alho, açafrão, cebola, cenoura, pimentão e salsa.', img: 'img/loja/tempero-caipira.jpg', unit: 'A granel' },
+  { id: 'tempero-edu', nome: 'Tempero Edu Guedes premium', cat: 'temperos', tag: 'Temperos', desc: 'Mix com ervas finas, alho tostado e cúrcuma para todo tipo de prato.', img: 'img/loja/tempero-edu.jpg', unit: 'A granel' },
+  { id: 'louro-em-po', nome: 'Louro em pó', cat: 'temperos', tag: 'Temperos', desc: 'Prático e potente para temperar feijões, sopas e cozidos.', img: 'img/loja/louro-em-po.jpg', unit: 'A granel' },
+  { id: 'acafrao-paprica', nome: 'Açafrão, páprica e colorau', cat: 'temperos', tag: 'Temperos', desc: 'Páprica doce e defumada, açafrão da terra puro e colorau sem sal.', img: 'img/loja/acafrao-paprica.jpg', unit: 'A granel' },
+  { id: 'tempero-tartaro', nome: 'Tempero tártaro', cat: 'temperos', tag: 'Temperos', desc: 'Blend perfeito para realçar o sabor de peixes, aves e legumes assados.', img: 'img/loja/tempero-tartaro.jpg', unit: 'A granel' },
+  { id: 'tempero-feijao', nome: 'Tempero para feijão em flocos', cat: 'temperos', tag: 'Temperos', desc: 'Temperos secos que hidratam e perfumam o feijão durante o cozimento.', img: 'img/loja/tempero-feijao.jpg', unit: 'A granel' },
+  { id: 'chimichurri', nome: 'Chimichurri barbecue', cat: 'temperos', tag: 'Temperos', desc: 'Ervas clássicas desidratadas para churrasco, molhos e marinadas.', img: 'img/loja/chimichurri.jpg', unit: 'A granel' },
+
+  // CHÁS E CAFÉS
+  { id: 'cafe', nome: 'Café em grão 100% arábica', cat: 'chas-cafes', tag: 'Cafés', desc: 'Grãos selecionados com aroma marcante para moer e preparar na hora.', img: 'img/loja/cafe.jpg', unit: 'Em grãos' },
+  { id: 'cha-leao', nome: 'Chás Leão variados', cat: 'chas-cafes', tag: 'Chás', desc: 'Seleção em sachês: camomila, erva-doce, hortelã, cidreira e matte.', img: 'img/loja/cha-leao-prateleira.jpg', unit: 'Caixa com sachês' },
+
+  // SUPLEMENTOS E ENERGIA
+  { id: 'guarana', nome: 'Guaraná em pó puro', cat: 'suplementos', tag: 'Energéticos naturais', desc: 'Estimulante natural que combate a fadiga física e mental.', img: 'img/loja/guarana.jpg', unit: 'Pó' },
+  { id: 'creatina', nome: 'Creatina pura', cat: 'suplementos', tag: 'Suplementos', desc: 'Marcas de alta procedência para auxílio de força e recuperação muscular.', img: 'img/loja/creatina.jpg', unit: 'Pote' },
+  { id: 'glutamina-beta', nome: 'Glutamina e beta-alanina', cat: 'suplementos', tag: 'Suplementos', desc: 'Suplementação direcionada à rotina esportiva e imunidade.', img: 'img/loja/glutamina-beta-alanina.jpg', unit: 'Pote' },
+  { id: 'vitamina-b12', nome: 'Vitamina B12 (metilcobalamina)', cat: 'suplementos', tag: 'Suplementos', desc: 'Cápsulas com forma ativa de B12 de absorção otimizada.', img: 'img/loja/vitamina-b12.jpg', unit: 'Frasco' },
+
+  // EMPÓRIO, DOCES E CUIDADOS
+  { id: 'cacau', nome: 'Cacau em pó 100% puro', cat: 'emporio', tag: 'Confeitaria natural', desc: 'Sem adição de açúcar para bolos, sobremesas e bebidas nutritivas.', img: 'img/loja/cacau.jpg', unit: 'A granel' },
+  { id: 'bebidas-vegetais', nome: 'Bebidas vegetais Silk', cat: 'emporio', tag: 'Bebidas vegetais', desc: 'Alternativas sem lactose nos sabores amêndoa, coco e castanha.', img: 'img/loja/bebidas-vegetais.jpg', unit: '1 Litro' },
+  { id: 'flocos-confeitos', nome: 'Flocos macios e confeitos', cat: 'emporio', tag: 'Confeitaria', desc: 'Acabamento profissional para bolos e doces caseiros.', img: 'img/loja/flocos-confeitos.jpg', unit: 'Embalagem' },
+  { id: 'confeito-micanga', nome: 'Confeito miçanga de chocolate', cat: 'emporio', tag: 'Confeitaria', desc: 'Para enrolar brigadeiros e finalizar sobremesas festivas.', img: 'img/loja/confeito-micanga.jpg', unit: 'Embalagem' },
+  { id: 'cereja-calda', nome: 'Cereja em calda com cabo', cat: 'emporio', tag: 'Confeitaria', desc: 'Cerejas selecionadas para decoração de drinks, tortas e taças.', img: 'img/loja/cereja-calda.jpg', unit: 'Vidro' },
+  { id: 'gelatinas-zero', nome: 'Gelatinas zero açúcar', cat: 'emporio', tag: 'Doces saudáveis', desc: 'Sobremesa leve e refrescante sem açúcares adicionados.', img: 'img/loja/gelatinas-zero.jpg', unit: 'Caixinha' },
+  { id: 'geleias-queensberry', nome: 'Geleias gourmet Queensberry', cat: 'emporio', tag: 'Geleias', desc: 'Opções diet de frutas e gourmet para tábuas e queijos.', img: 'img/loja/geleias-queensberry.jpg', unit: 'Vidro' },
+  { id: 'vinagre-maca', nome: 'Vinagre de maçã orgânico', cat: 'emporio', tag: 'Vinagres e azeites', desc: 'Fermentação natural de maçã para saladas e bem-estar.', img: 'img/loja/vinagre-maca.jpg', unit: '500ml' },
+  { id: 'oleo-coco', nome: 'Óleo de coco virgem', cat: 'emporio', tag: 'Óleos saudáveis', desc: 'Multiuso culinário resistente a altas temperaturas.', img: 'img/loja/oleo-coco.jpg', unit: 'Frasco' },
+  { id: 'oleos-vegetais', nome: 'Óleos vegetais prensados', cat: 'emporio', tag: 'Óleos corporais e capilares', desc: 'Óleos de buriti, mamona, babosa e rícino.', img: 'img/loja/oleos-vegetais.jpg', unit: 'Frasco' },
+  { id: 'oleos-gotas', nome: 'Óleos e extratos em gotas', cat: 'emporio', tag: 'Gotas e tinturas', desc: 'Rosa mosqueta, óleo ozonizado e extratos concentrados.', img: 'img/loja/oleos-gotas.jpg', unit: 'Conta-gotas' },
+  { id: 'sabonetes', nome: 'Sabonetes naturais em barra', cat: 'emporio', tag: 'Cuidados pessoais', desc: 'Artesanais como enxofre e aroeira para limpeza suave da pele.', img: 'img/loja/sabonetes.jpg', unit: 'Barra' },
+  { id: 'percarbonato', nome: 'Percarbonato de sódio', cat: 'emporio', tag: 'Limpeza ecológica', desc: 'Alvejante biodegradável com ação de oxigênio ativo.', img: 'img/loja/percarbonato.jpg', unit: 'A granel' }
+];
+
+// Elementos da Interface
+const shopGrid = document.getElementById('shop-grid');
+const countEncontrados = document.getElementById('shop-itens-encontrados');
+const inputBusca = document.getElementById('input-busca-produtos');
+const botoesCat = document.querySelectorAll('.cat-pill');
+
+let categoriaAtiva = 'todos';
+let buscaAtiva = '';
 let carrinho = [];
 let produtoAtualModal = null;
 let quantidadeModal = 1;
 
-// Filtro por Categoria
-const botoesCat = document.querySelectorAll('.cat-pill');
-const cards = document.querySelectorAll('.shop-card');
+// Renderização dos cards no grid
+function renderizarProdutos() {
+  if (!shopGrid) return;
 
+  const filtrados = catalogoProdutos.filter(item => {
+    const bateCategoria = categoriaAtiva === 'todos' || item.cat === categoriaAtiva;
+    const termo = buscaAtiva.toLowerCase().trim();
+    const bateBusca = !termo || item.nome.toLowerCase().includes(termo) || item.tag.toLowerCase().includes(termo) || item.desc.toLowerCase().includes(termo);
+    return bateCategoria && bateBusca;
+  });
+
+  if (countEncontrados) {
+    countEncontrados.textContent = `${filtrados.length} disponíveis`;
+  }
+
+  if (filtrados.length === 0) {
+    shopGrid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 40px 10px; color: var(--cinza);">
+        <p>Nenhum produto encontrado nesta busca.</p>
+      </div>
+    `;
+    return;
+  }
+
+  shopGrid.innerHTML = filtrados.map(item => `
+    <article class="shop-card">
+      <div class="shop-card-media" onclick="abrirDetalheProduto('${item.id}')">
+        <img src="${item.img}" alt="${item.nome}" loading="lazy" onerror="this.src='img/produtos-naturais.png'">
+      </div>
+      <div class="shop-card-body">
+        <span class="shop-card-tag">${item.tag}</span>
+        <h4 onclick="abrirDetalheProduto('${item.id}')">${item.nome}</h4>
+        <p class="shop-card-desc">${item.desc}</p>
+        <div class="shop-card-footer">
+          <span class="shop-card-unit">${item.unit}</span>
+          <button class="shop-add-btn" onclick="adicionarAoCarrinho('${item.nome}', '${item.unit}', '${item.img}')" aria-label="Adicionar ${item.nome}">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+          </button>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+// Eventos de Categorias
 botoesCat.forEach(btn => {
   btn.addEventListener('click', () => {
     botoesCat.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const categoria = btn.dataset.cat;
-
-    cards.forEach(card => {
-      const cardCats = card.dataset.cat || '';
-      if (categoria === 'todos' || cardCats.includes(categoria)) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
-    });
+    categoriaAtiva = btn.dataset.cat;
+    renderizarProdutos();
   });
 });
 
-// Busca em Tempo Real
-const inputBusca = document.getElementById('input-busca-produtos');
+// Evento de Busca
 if (inputBusca) {
   inputBusca.addEventListener('input', (e) => {
-    const termo = e.target.value.toLowerCase().trim();
-    cards.forEach(card => {
-      const texto = card.dataset.nome || '';
-      card.style.display = texto.includes(termo) ? 'flex' : 'none';
-    });
+    buscaAtiva = e.target.value;
+    renderizarProdutos();
   });
 }
 
@@ -357,12 +401,12 @@ const qtyPlus = document.getElementById('qty-plus');
 const btnModalAdicionar = document.getElementById('btn-modal-adicionar');
 
 function abrirDetalheProduto(id) {
-  const item = produtosInfo[id];
+  const item = catalogoProdutos.find(p => p.id === id);
   if (!item) return;
 
   produtoAtualModal = item;
   quantidadeModal = 1;
-  qtyValor.textContent = '1';
+  if (qtyValor) qtyValor.textContent = '1';
 
   document.getElementById('detalhe-nome').textContent = item.nome;
   document.getElementById('detalhe-tag').textContent = item.tag;
@@ -427,20 +471,38 @@ function removerDoCarrinho(nome) {
   atualizarCarrinhoUI();
 }
 
+function alterarQtdCarrinho(nome, delta) {
+  const item = carrinho.find(i => i.nome === nome);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) {
+    removerDoCarrinho(nome);
+  } else {
+    atualizarCarrinhoUI();
+  }
+}
+
 function atualizarCarrinhoUI() {
   const total = carrinho.reduce((acc, item) => acc + item.qty, 0);
-  cartCount.textContent = total;
-  cartTotalItens.textContent = `${total} item(ns) na lista`;
+  if (cartCount) cartCount.textContent = total;
+  if (cartTotalItens) cartTotalItens.textContent = `${total} item(ns) na lista`;
+
+  if (!cartItemsContainer) return;
 
   if (carrinho.length === 0) {
     cartItemsContainer.innerHTML = '<p class="cart-empty-text">Nenhum produto adicionado ainda.</p>';
   } else {
     cartItemsContainer.innerHTML = carrinho.map(item => `
       <div class="cart-item-row">
-        <img class="cart-item-img" src="${item.img}" alt="${item.nome}">
+        <img class="cart-item-img" src="${item.img}" alt="${item.nome}" onerror="this.src='img/produtos-naturais.png'">
         <div class="cart-item-meta">
           <h5>${item.nome}</h5>
-          <span>${item.qty}x (${item.unit})</span>
+          <span>${item.unit}</span>
+        </div>
+        <div class="qty-control" style="gap: 8px;">
+          <button type="button" onclick="alterarQtdCarrinho('${item.nome}', -1)">-</button>
+          <span>${item.qty}</span>
+          <button type="button" onclick="alterarQtdCarrinho('${item.nome}', 1)">+</button>
         </div>
         <button class="cart-item-remove" onclick="removerDoCarrinho('${item.nome}')" aria-label="Remover">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path></svg>
@@ -464,15 +526,14 @@ if (btnFecharCarrinho) {
   });
 }
 
-// Finalizar pedido enviando a lista formatada no WhatsApp
 if (btnFinalizarWhatsApp) {
   btnFinalizarWhatsApp.addEventListener('click', () => {
     if (carrinho.length === 0) {
-      alert('Selecione pelo menos um item primeiro.');
+      alert('Sua lista está vazia.');
       return;
     }
 
-    let texto = 'Olá, Empório dos Cereais! Gostaria de consultar a disponibilidade dos seguintes produtos:\n\n';
+    let texto = 'Olá, Empório dos Cereais! Gostaria de consultar os seguintes produtos:\n\n';
     carrinho.forEach(item => {
       texto += `• ${item.qty}x ${item.nome} (${item.unit})\n`;
     });
@@ -483,4 +544,6 @@ if (btnFinalizarWhatsApp) {
   });
 }
 
+// Inicializa o catálogo e carrinho
+renderizarProdutos();
 atualizarCarrinhoUI();
