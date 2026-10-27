@@ -547,3 +547,55 @@ if (btnFinalizarWhatsApp) {
 // Inicializa o catálogo e carrinho
 renderizarProdutos();
 atualizarCarrinhoUI();
+
+
+// Controle da Barra de Navegação Inferior Mobile
+const bottomNavItems = document.querySelectorAll('.bottom-nav-item[data-goto]');
+const bottomCartBtn = document.getElementById('bottom-cart-btn');
+const bottomCartBadge = document.getElementById('bottom-cart-badge');
+
+// Sincroniza a troca de abas com a barra inferior
+bottomNavItems.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const alvo = btn.getAttribute('data-goto');
+
+    // Remove active de todos e aplica no clicado
+    document.querySelectorAll('.bottom-nav-item').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Troca o painel ativo
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    const panelAlvo = document.getElementById(`panel-${alvo}`);
+    if (panelAlvo) {
+      panelAlvo.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Mantém o menu superior sincronizado caso esteja no desktop
+    document.querySelectorAll('#tabNav button').forEach(b => {
+      if (b.getAttribute('data-goto') === alvo) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+  });
+});
+
+// Botão Carrinho da barra inferior abre o drawer
+if (bottomCartBtn) {
+  bottomCartBtn.addEventListener('click', () => {
+    const cartDrawer = document.getElementById('cart-drawer');
+    if (cartDrawer) {
+      cartDrawer.classList.add('aberto');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+}
+
+// Sincroniza o número de itens na barra inferior sempre que o carrinho mudar
+const originalAtualizarCarrinhoUI = atualizarCarrinhoUI;
+atualizarCarrinhoUI = function() {
+  originalAtualizarCarrinhoUI();
+  if (bottomCartBadge && typeof carrinho !== 'undefined') {
+    const total = carrinho.reduce((acc, item) => acc + item.qty, 0);
+    bottomCartBadge.textContent = total;
+  }
+};
