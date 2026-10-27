@@ -460,1050 +460,336 @@
 
     </section>
 
-
     <!-- ==============================
-         PRODUTOS
+         PRODUTOS (EXPERIÊNCIA APP MOBILE)
     =============================== -->
 
-    <section
-      class="panel"
-      id="panel-produtos"
-    >
+    <section class="panel" id="panel-produtos">
 
-      <div class="section-pad">
+      <div class="shop-container">
 
-        <div class="container">
-
-          <div class="section-head">
-
-            <span class="eyebrow">
-              Nossos produtos
-            </span>
-
-            <h2>
-              Variedade de produtos naturais.
-            </h2>
-
-            <p>
-              Conheça algumas das opções encontradas
-              no Empório dos Cereais. A disponibilidade
-              pode variar conforme o estoque.
-            </p>
-
+        <!-- CABEÇALHO DO SHOPPING COM BUSCA E CARRINHO -->
+        <div class="shop-topbar">
+          <div>
+            <span class="shop-eyebrow">Produtos naturais</span>
+            <h2 class="shop-title">Mais saúde e bem-estar para o seu dia.</h2>
           </div>
 
+          <!-- Botão do Carrinho Flutuante / Topo -->
+          <button class="shop-cart-trigger" id="btn-abrir-carrinho" aria-label="Abrir meu carrinho">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-badge" id="cart-count">0</span>
+          </button>
+        </div>
 
-          <div class="produtos-grid">
+        <!-- BARRA DE PESQUISA -->
+        <div class="shop-search-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="search"
+            id="input-busca-produtos"
+            placeholder="Buscar produtos..."
+            aria-label="Buscar produtos"
+            autocomplete="off"
+          >
+        </div>
 
+        <!-- PÍLULAS DE CATEGORIAS -->
+        <div class="shop-categories" id="shop-categories" role="tablist">
+          <button class="cat-pill active" data-cat="todos">
+            <span>Todos</span>
+          </button>
+          <button class="cat-pill" data-cat="ervas">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12c0-3.3 1.6-6.2 4-8"></path><path d="M12 2v20"></path></svg>
+            <span>Ervas</span>
+          </button>
+          <button class="cat-pill" data-cat="castanhas">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 12c1.5 2 4.5 2 6 0"></path></svg>
+            <span>Castanhas</span>
+          </button>
+          <button class="cat-pill" data-cat="graos">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v18M18 3v18M12 8v13M12 3v2"></path></svg>
+            <span>Grãos</span>
+          </button>
+          <button class="cat-pill" data-cat="temperos">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"></path></svg>
+            <span>Temperos</span>
+          </button>
+          <button class="cat-pill" data-cat="chas">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+            <span>Chás</span>
+          </button>
+        </div>
 
-            <!-- CAVALINHA -->
+        <!-- TÍTULO DA SEÇÃO -->
+        <div class="shop-grid-header">
+          <h3>Produtos em destaque</h3>
+          <span class="shop-grid-count" id="shop-itens-encontrados">Disponíveis</span>
+        </div>
 
-            <article class="produto-card">
+        <!-- GRID COM 2 COLUNAS MOBILE -->
+        <div class="shop-grid" id="shop-grid">
 
-              <img
-                src="img/cavalinha.png"
-                alt="Cavalinha em folhas"
-              >
-
-              <div class="produto-info">
-
-                <span class="produto-tag">
-                  Ervas e folhas
-                </span>
-
-                <h3>Cavalinha</h3>
-
-                <p>
-                  Uma das opções de ervas disponíveis
-                  no Empório dos Cereais.
-                </p>
-
-              
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Tradicionalmente usada em chás pela ação diurética e por ser fonte de silício.</p>
-
+          <!-- HIBISCO -->
+          <article class="shop-card" data-cat="ervas chas" data-nome="hibisco flor de hibisco cha">
+            <div class="shop-card-media" onclick="abrirDetalheProduto('hibisco')">
+              <img src="img/hibisco.png" alt="Flor de Hibisco" loading="lazy">
+            </div>
+            <div class="shop-card-body">
+              <span class="shop-card-tag">Ervas e Flores</span>
+              <h4 onclick="abrirDetalheProduto('hibisco')">Hibisco</h4>
+              <p class="shop-card-desc">Rico em antioxidantes e ação diurética.</p>
+              <div class="shop-card-footer">
+                <span class="shop-card-unit">100g (a granel)</span>
+                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Hibisco', '100g', 'img/hibisco.png')" aria-label="Adicionar Hibisco">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                </button>
               </div>
+            </div>
+          </article>
 
-            </article>
-
-
-            <!-- HIBISCO -->
-
-            <article class="produto-card">
-
-              <img
-                src="img/hibisco.png"
-                alt="Flor de hibisco"
-              >
-
-              <div class="produto-info">
-
-                <span class="produto-tag">
-                  Ervas e flores
-                </span>
-
-                <h3>Hibisco</h3>
-
-                <p>
-                  Flor de hibisco disponível entre
-                  a variedade de produtos naturais
-                  da loja.
-                </p>
-
-              
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Muito consumido em chá, tradicionalmente associado à ação diurética e antioxidante.</p>
-
+          <!-- CASTANHA-DO-BRASIL -->
+          <article class="shop-card" data-cat="castanhas" data-nome="castanha do brasil castanha do para">
+            <div class="shop-card-media" onclick="abrirDetalheProduto('castanha-brasil')">
+              <img src="img/castanhas.png" alt="Castanha do Brasil" loading="lazy">
+            </div>
+            <div class="shop-card-body">
+              <span class="shop-card-tag">Castanhas</span>
+              <h4 onclick="abrirDetalheProduto('castanha-brasil')">Castanha-do-Brasil</h4>
+              <p class="shop-card-desc">Rica em selênio, energia e gorduras boas.</p>
+              <div class="shop-card-footer">
+                <span class="shop-card-unit">200g (selecionada)</span>
+                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Castanha-do-Brasil', '200g', 'img/castanhas.png')" aria-label="Adicionar Castanha-do-Brasil">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                </button>
               </div>
+            </div>
+          </article>
 
-            </article>
-
-
-            <!-- CASTANHAS -->
-
-            <article class="produto-card">
-
-              <img
-                src="img/castanhas.png"
-                alt="Castanhas"
-              >
-
-              <div class="produto-info">
-
-                <span class="produto-tag">
-                  Castanhas
-                </span>
-
-                <h3>
-                  Castanhas e derivados
-                </h3>
-
-                <p>
-                  Castanha-do-Brasil, castanha-de-caju,
-                  farinhas e outros derivados disponíveis.
-                </p>
-
-              
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Fonte de energia, proteínas e gorduras boas; a castanha-do-Brasil é rica em selênio.</p>
-
+          <!-- CAVALINHA -->
+          <article class="shop-card" data-cat="ervas chas" data-nome="cavalinha cha diuretico">
+            <div class="shop-card-media" onclick="abrirDetalheProduto('cavalinha')">
+              <img src="img/cavalinha.png" alt="Cavalinha em folhas" loading="lazy">
+            </div>
+            <div class="shop-card-body">
+              <span class="shop-card-tag">Ervas e Folhas</span>
+              <h4 onclick="abrirDetalheProduto('cavalinha')">Cavalinha</h4>
+              <p class="shop-card-desc">Tradicionalmente usada pela ação diurética.</p>
+              <div class="shop-card-footer">
+                <span class="shop-card-unit">100g (a granel)</span>
+                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Cavalinha', '100g', 'img/cavalinha.png')" aria-label="Adicionar Cavalinha">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                </button>
               </div>
-
-            </article>
-
-
-            <!-- CANELAS -->
-
-            <article class="produto-card">
-
-              <img
-                src="img/canelas.png"
-                alt="Canela em pó e canela em pau"
-              >
-
-              <div class="produto-info">
-
-                <span class="produto-tag">
-                  Canelas
-                </span>
-
-                <h3>Canelas</h3>
-
-                <p>
-                  Canela em pó e canela em pau
-                  disponíveis no Empório dos Cereais.
-                </p>
-
-              
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Dão sabor a doces e bebidas e são tradicionalmente associadas à digestão e à ação antioxidante.</p>
-
-              </div>
-
-            </article>
-
-
-            <!-- FIBRAS -->
-
-            <article class="produto-card">
-
-              <img
-                src="img/fibras.png"
-                alt="Fibras e farinhas"
-              >
-
-              <div class="produto-info">
-
-                <span class="produto-tag">
-                  Farinhas e fibras
-                </span>
-
-                <h3>
-                  Fibras e farinhas
-                </h3>
-
-                <p>
-                  Diferentes tipos de fibras e farinhas
-                  disponíveis entre os produtos da loja.
-                </p>
-
-              
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Ajudam no funcionamento do intestino e dão mais saciedade às refeições.</p>
-
-              </div>
-
-            </article>
-
-
-            <!-- CASCAS E ERVAS -->
-
-            <article class="produto-card">
-
-              <img
-                src="img/cascas-ervas.png"
-                alt="Cascas e ervas"
-              >
-
-              <div class="produto-info">
-
-                <span class="produto-tag">
-                  Ervas e cascas
-                </span>
-
-                <h3>
-                  Cascas e ervas
-                </h3>
-
-                <p>
-                  Diversas opções de cascas e ervas
-                  comercializadas em embalagens.
-                </p>
-
-              
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Usadas em chás e preparos tradicionais; cada uma tem seu uso, consulte a loja.</p>
-
-              </div>
-
-            </article>
-
-
-            <!-- CATUABA -->
-
-            <article class="produto-card">
-
-              <img
-                src="img/catuaba.png"
-                alt="Catuaba"
-              >
-
-              <div class="produto-info">
-
-                <span class="produto-tag">
-                  Produtos naturais
-                </span>
-
-                <h3>Catuaba</h3>
-
-                <p>
-                  Catuaba disponível entre a variedade
-                  de produtos naturais do Empório.
-                </p>
-
-              
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Tradicionalmente consumida como tônico para dar mais disposição.</p>
-
-              </div>
-
-            </article>
-
-
-            <!-- ERVAS EMBALADAS -->
-
-            <article class="produto-card">
-
-              <img
-                src="img/ervas-embaladas.png"
-                alt="Ervas embaladas"
-              >
-
-              <div class="produto-info">
-
-                <span class="produto-tag">
-                  Ervas
-                </span>
-
-                <h3>
-                  Ervas embaladas
-                </h3>
-
-                <p>
-                  Diferentes variedades de ervas
-                  embaladas disponíveis no estabelecimento.
-                </p>
-
-              
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Chás do dia a dia, escolhidos conforme o que cada erva oferece.</p>
-
-              </div>
-
-            </article>
-
-
-            <!-- NOVOS PRODUTOS -->
-
-            <article class="produto-card">
-
-              <img src="img/loja/sal-rosa.jpg" alt="Sal rosa do Himalaia" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Temperos</span>
-
-                <h3>Sal rosa do Himalaia</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Rico em minerais, entre eles o potássio, e promove equilíbrio natural no organismo, segundo a loja.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/noz-moscada.jpg" alt="Noz-moscada" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Especiarias</span>
-
-                <h3>Noz-moscada</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Dá sabor e aroma a pratos doces e salgados e também é usada de forma medicinal.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/fumaca-em-po.jpg" alt="Fumaça em pó" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Temperos</span>
-
-                <h3>Fumaça em pó</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Dá sabor, cor e gosto de defumado a carnes, frangos, legumes e peixes.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/curry.jpg" alt="Curry indiano" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Temperos</span>
-
-                <h3>Curry indiano</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Mistura de especiarias que reúne os benefícios de cada uma delas, com cúrcuma.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/guarana.jpg" alt="Guaraná em pó" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Energéticos naturais</span>
-
-                <h3>Guaraná em pó</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Energético natural que ajuda a combater o cansaço físico e mental.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/cacau.jpg" alt="Cacau em pó puro" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Doces e confeitaria</span>
-
-                <h3>Cacau em pó puro</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para chocolates, bolos e bebidas, sem mistura.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/nozes.jpg" alt="Nozes" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Castanhas e frutas secas</span>
-
-                <h3>Nozes</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Ajudam a reduzir o colesterol ruim, cuidam do coração e fazem bem à memória.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/flor-de-sal.jpg" alt="Flor de sal" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Temperos</span>
-
-                <h3>Flor de sal</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Indicada como tempero e para finalizar pratos.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/linhaca.jpg" alt="Linhaça (marrom e dourada)" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Grãos e sementes</span>
-
-                <h3>Linhaça (marrom e dourada)</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Rica em ômega 3 e proteínas, ajuda a melhorar o colesterol e o controle do açúcar no sangue.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/gergelim-preto.jpg" alt="Gergelim preto" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Grãos e sementes</span>
-
-                <h3>Gergelim preto</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Ajuda a reduzir o colesterol e a cuidar do coração, além de estimular o funcionamento cerebral.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/gergelim-branco.jpg" alt="Gergelim branco" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Grãos e sementes</span>
-
-                <h3>Gergelim branco</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Rico em vitaminas do complexo B, ferro e fibras; bom para cabelos e ossos.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
+            </div>
+          </article>
+
+          <!-- CHIA EM GRÃO -->
+          <article class="shop-card" data-cat="graos" data-nome="chia em grao sementes fibras">
+            <div class="shop-card-media" onclick="abrirDetalheProduto('chia')">
               <img src="img/loja/chia.jpg" alt="Chia em grão" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Grãos e sementes</span>
-
-                <h3>Chia em grão</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Rica em fibras, ajuda o intestino, fortalece a imunidade e auxilia no controle da glicemia.</p>
-
+            </div>
+            <div class="shop-card-body">
+              <span class="shop-card-tag">Grãos e Sementes</span>
+              <h4 onclick="abrirDetalheProduto('chia')">Chia em grão</h4>
+              <p class="shop-card-desc">Rica em fibras, saciedade e ômega 3.</p>
+              <div class="shop-card-footer">
+                <span class="shop-card-unit">A granel</span>
+                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Chia em grão', 'A granel', 'img/loja/chia.jpg')" aria-label="Adicionar Chia">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                </button>
               </div>
+            </div>
+          </article>
 
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/ervilha.jpg" alt="Ervilha inteira" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Grãos e sementes</span>
-
-                <h3>Ervilha inteira</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Pouco calórica, rica em antioxidantes e sais minerais.</p>
-
+          <!-- LINHAÇA -->
+          <article class="shop-card" data-cat="graos" data-nome="linhaca dourada marrom sementes">
+            <div class="shop-card-media" onclick="abrirDetalheProduto('linhaca')">
+              <img src="img/loja/linhaca.jpg" alt="Linhaça marrom e dourada" loading="lazy">
+            </div>
+            <div class="shop-card-body">
+              <span class="shop-card-tag">Grãos e Sementes</span>
+              <h4 onclick="abrirDetalheProduto('linhaca')">Linhaça selecionada</h4>
+              <p class="shop-card-desc">Fonte de fibras e controle da glicemia.</p>
+              <div class="shop-card-footer">
+                <span class="shop-card-unit">A granel</span>
+                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Linhaça selecionada', 'A granel', 'img/loja/linhaca.jpg')" aria-label="Adicionar Linhaça">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                </button>
               </div>
+            </div>
+          </article>
 
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/hortela.jpg" alt="Hortelã desidratada" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Ervas e folhas</span>
-
-                <h3>Hortelã desidratada</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Ajuda na digestão e alivia cólicas, gases e náuseas.</p>
-
+          <!-- SAL ROSA DO HIMALAIA -->
+          <article class="shop-card" data-cat="temperos" data-nome="sal rosa himalaia tempero">
+            <div class="shop-card-media" onclick="abrirDetalheProduto('sal-rosa')">
+              <img src="img/loja/sal-rosa.jpg" alt="Sal rosa do Himalaia" loading="lazy">
+            </div>
+            <div class="shop-card-body">
+              <span class="shop-card-tag">Temperos</span>
+              <h4 onclick="abrirDetalheProduto('sal-rosa')">Sal rosa do Himalaia</h4>
+              <p class="shop-card-desc">Rico em minerais para o dia a dia.</p>
+              <div class="shop-card-footer">
+                <span class="shop-card-unit">Fino e Grosso</span>
+                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Sal rosa do Himalaia', 'Fino/Grosso', 'img/loja/sal-rosa.jpg')" aria-label="Adicionar Sal rosa">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                </button>
               </div>
+            </div>
+          </article>
 
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/cafe.jpg" alt="Café em grão 100% arábica" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Cafés</span>
-
-                <h3>Café em grão 100% arábica</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para moer na hora e preparar o café do dia a dia.</p>
-
+          <!-- CURRY INDIANO -->
+          <article class="shop-card" data-cat="temperos" data-nome="curry indiano tempero especiarias">
+            <div class="shop-card-media" onclick="abrirDetalheProduto('curry')">
+              <img src="img/loja/curry.jpg" alt="Curry indiano" loading="lazy">
+            </div>
+            <div class="shop-card-body">
+              <span class="shop-card-tag">Temperos</span>
+              <h4 onclick="abrirDetalheProduto('curry')">Curry indiano</h4>
+              <p class="shop-card-desc">Mix de especiarias puras e cúrcuma.</p>
+              <div class="shop-card-footer">
+                <span class="shop-card-unit">A granel</span>
+                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Curry indiano', 'A granel', 'img/loja/curry.jpg')" aria-label="Adicionar Curry">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                </button>
               </div>
+            </div>
+          </article>
 
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/arroz-integral.jpg" alt="Arroz integral multigrãos" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Grãos e sementes</span>
-
-                <h3>Arroz integral multigrãos</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Mistura de grãos e sementes com mais fibras e nutrientes que o arroz comum.</p>
-
+          <!-- NOZES -->
+          <article class="shop-card" data-cat="castanhas" data-nome="nozes frutas secas oleaginosas">
+            <div class="shop-card-media" onclick="abrirDetalheProduto('nozes')">
+              <img src="img/loja/nozes.jpg" alt="Nozes" loading="lazy">
+            </div>
+            <div class="shop-card-body">
+              <span class="shop-card-tag">Castanhas</span>
+              <h4 onclick="abrirDetalheProduto('nozes')">Nozes chilenas</h4>
+              <p class="shop-card-desc">Cuidado cardiovascular e memória ativa.</p>
+              <div class="shop-card-footer">
+                <span class="shop-card-unit">A granel</span>
+                <button class="shop-add-btn" onclick="adicionarAoCarrinho('Nozes chilenas', 'A granel', 'img/loja/nozes.jpg')" aria-label="Adicionar Nozes">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                </button>
               </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/tempero-caipira.jpg" alt="Tempero caipira" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Temperos</span>
-
-                <h3>Tempero caipira</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Mistura pronta de açafrão, alho, cebola, cenoura, pimentão e salsa para o dia a dia.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/tempero-edu.jpg" alt="Tempero Edu Guedes premium" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Temperos</span>
-
-                <h3>Tempero Edu Guedes premium</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Mix de especiarias, alho, cebola, manjericão e cúrcuma para carnes e legumes.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/bebidas-vegetais.jpg" alt="Bebidas vegetais Silk" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Bebidas vegetais</span>
-
-                <h3>Bebidas vegetais Silk</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Alternativas ao leite de origem animal, em sabores como coco, amêndoa e castanha-de-caju.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/flocos-confeitos.jpg" alt="Flocos macios e confeitos" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Doces e confeitaria</span>
-
-                <h3>Flocos macios e confeitos</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para decorar e dar acabamento a bolos, doces e sobremesas.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/confeito-micanga.jpg" alt="Confeito miçanga de chocolate" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Doces e confeitaria</span>
-
-                <h3>Confeito miçanga de chocolate</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para decorar bolos, brigadeiros e sobremesas.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/cereja-calda.jpg" alt="Cereja em calda com cabo" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Doces e confeitaria</span>
-
-                <h3>Cereja em calda com cabo</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para decorar sobremesas, bolos e drinks.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/manjericao.jpg" alt="Manjericão desidratado" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Ervas e folhas</span>
-
-                <h3>Manjericão desidratado</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para temperar massas, molhos, carnes e saladas.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/sal-marinho.jpg" alt="Sal marinho fino e grosso" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Temperos</span>
-
-                <h3>Sal marinho fino e grosso</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Segundo a loja, é secado naturalmente ao sol, sem processo químico, e tem o iodo natural.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/louro-em-po.jpg" alt="Louro em pó" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Temperos</span>
-
-                <h3>Louro em pó</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Tempero para feijões, carnes e caldos.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/acafrao-paprica.jpg" alt="Açafrão, páprica e colorau" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Temperos</span>
-
-                <h3>Açafrão, páprica e colorau</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Dão cor e sabor a carnes, arroz e molhos. A páprica vem nas versões doce e defumada, e há colorau sem sal.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/tempero-tartaro.jpg" alt="Tempero tártaro" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Temperos</span>
-
-                <h3>Tempero tártaro</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Ideal para peixes, frutos do mar, carnes e aves; leva cebola, alho, cenoura, pimentão e salsa.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/tempero-feijao.jpg" alt="Tempero para feijão em flocos" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Temperos</span>
-
-                <h3>Tempero para feijão em flocos</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Para dar sabor ao feijão do dia a dia.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/chimichurri.jpg" alt="Chimichurri barbecue" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Temperos</span>
-
-                <h3>Chimichurri barbecue</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Mistura de alho, cebola, pimentão, orégano, salsa, tomate em flocos e cúrcuma, para churrasco e carnes.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/arroz-com-casca.jpg" alt="Arroz com casca" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Grãos e sementes</span>
-
-                <h3>Arroz com casca</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Vendido a granel, para quem prefere o grão com casca.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/ameixa.jpg" alt="Ameixa sem caroço" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Frutas secas</span>
-
-                <h3>Ameixa sem caroço</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Fruta seca vendida a granel, pronta para comer ou usar em receitas.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/cha-leao-prateleira.jpg" alt="Chás Leão" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Chás</span>
-
-                <h3>Chás Leão</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Caixas de chá em vários sabores, como erva-doce, hortelã, camomila, capim-cidreira e matte.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/gelatinas-zero.jpg" alt="Gelatinas zero Dr. Oetker" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Doces e confeitaria</span>
-
-                <h3>Gelatinas zero Dr. Oetker</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Opções zero açúcar nos sabores uva, abacaxi e cereja.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/geleias-queensberry.jpg" alt="Geleias gourmet Queensberry" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Geleias</span>
-
-                <h3>Geleias gourmet Queensberry</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Geleias de damasco e goiaba (linha diet) e versões gourmet de alho caramelizado e cebola caramelizada com pimenta.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/vinagre-maca.jpg" alt="Vinagre de maçã orgânico" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Vinagres</span>
-
-                <h3>Vinagre de maçã orgânico</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Vinagre de fruta maçã em garrafas de 500 ml, para temperar saladas e preparar receitas.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/oleo-coco.jpg" alt="Óleo de coco Copra" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Óleos</span>
-
-                <h3>Óleo de coco Copra</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Óleo de coco em frasco de 250 ml, para usar em receitas.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/oleos-vegetais.jpg" alt="Óleos vegetais" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Óleos</span>
-
-                <h3>Óleos vegetais</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Óleos de buriti, babosa, mamona e rícino, entre outros; consulte o rótulo de cada um para a indicação de uso.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/oleos-gotas.jpg" alt="Óleos e extratos em gotas" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Óleos</span>
-
-                <h3>Óleos e extratos em gotas</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Frascos conta-gotas, como rosa mosqueta e óleo ozonizado; consulte a loja sobre o uso de cada um.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/sabonetes.jpg" alt="Sabonetes naturais" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Cuidados</span>
-
-                <h3>Sabonetes naturais</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Sabonetes artesanais em barra, como enxofre e aroeira; cada um traz sua indicação no rótulo.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/creatina.jpg" alt="Creatina" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Suplementos</span>
-
-                <h3>Creatina</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Potes de creatina de marcas como Max, Probiótica e Plant Power, para quem treina.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/glutamina-beta-alanina.jpg" alt="Glutamina e beta-alanina" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Suplementos</span>
-
-                <h3>Glutamina e beta-alanina</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Suplementos para quem treina; consulte um profissional antes de usar.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/vitamina-b12.jpg" alt="Vitamina B12 (metilcobalamina)" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Suplementos</span>
-
-                <h3>Vitamina B12 (metilcobalamina)</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Suplemento de vitamina B12 em cápsulas; consulte um profissional de saúde antes de usar.</p>
-
-              </div>
-
-            </article>
-
-            <article class="produto-card">
-
-              <img src="img/loja/percarbonato.jpg" alt="Percarbonato de sódio" loading="lazy">
-
-              <div class="produto-info">
-
-                <span class="produto-tag">Limpeza</span>
-
-                <h3>Percarbonato de sódio</h3>
-
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Alvejante ecológico e desinfetante para usos domésticos, segundo a loja.</p>
-
-              </div>
-
-            </article>
-
-            <!-- OUTROS PRODUTOS -->
-
-            <article class="produto-card">
-
-              <img
-                src="img/produtos-naturais.png"
-                alt="Produtos naturais"
-              >
-
-              <div class="produto-info">
-
-                <span class="produto-tag">
-                  Variedade
-                </span>
-
-                <h3>
-                  Outros produtos
-                </h3>
-
-                <p>
-                  Outras opções complementam a variedade
-                  encontrada no Empório dos Cereais.
-                </p>
-
-              
-                <p class="produto-beneficio"><strong>Ajuda em:</strong> Temperos, cereais, grãos e itens naturais para todas as refeições.</p>
-
-              </div>
-
-            </article>
-
-          </div>
-
-
-          
-          <h3 class="galeria-titulo">Mais da loja</h3>
-          <div class="galeria-loja">
-            <img src="img/loja/corredor.jpg" alt="Corredor de produtos a granel" loading="lazy">
-            <img src="img/loja/extratos.jpg" alt="Extratos e tinturas" loading="lazy">
-            <img src="img/loja/cha-leao.jpg" alt="Chás e vitaminas" loading="lazy">
-            <img src="img/loja/vinagres.jpg" alt="Vinagres e azeites" loading="lazy">
-            <img src="img/loja/cremes.jpg" alt="Cremes de castanhas e pastas" loading="lazy">
-            <img src="img/loja/suplementos.jpg" alt="Suplementos" loading="lazy">
-            <img src="img/loja/loja-corredor-2.jpg" alt="Prateleiras de produtos a granel" loading="lazy">
-            <img src="img/loja/loja-bebidas-vegetais.jpg" alt="Bebidas vegetais na prateleira" loading="lazy">
-            <img src="img/loja/loja-geleias-chocolates.jpg" alt="Geleias e chocolates" loading="lazy">
-          </div>
-
-          <div class="aviso-produtos">
-
-            <strong>
-              Disponibilidade dos produtos
-            </strong>
-
-            <p>
-              As indicações de uso seguem o que a loja informa e o uso tradicional de cada produto, e não substituem orientação médica. Os produtos disponíveis podem variar
-              conforme o estoque e as novas mercadorias
-              recebidas pelo estabelecimento.
-            </p>
-
-          </div>
-
+            </div>
+          </article>
+
+        </div>
+
+        <div class="aviso-produtos">
+          <strong>Atendimento direto no balcão</strong>
+          <p>
+            Trabalhamos com pesagem fracionada a granel na quantidade que desejar. Adicione seus itens à lista e envie para confirmação de estoque e valores via WhatsApp.
+          </p>
         </div>
 
       </div>
 
     </section>
 
+    <!-- ==============================
+         MODAL: DETALHES DO PRODUTO (TELA 2 DA FOTO)
+    =============================== -->
+    <div class="product-modal-backdrop" id="modal-detalhes" aria-hidden="true">
+      <div class="product-modal-sheet">
+        
+        <div class="modal-nav">
+          <button class="modal-close-btn" id="btn-fechar-detalhes" aria-label="Fechar detalhes">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+          </button>
+          <span class="modal-nav-title">Detalhes do produto</span>
+        </div>
 
+        <div class="modal-scroll-area">
+          <div class="modal-image-wrapper">
+            <img id="detalhe-img" src="" alt="Produto">
+          </div>
+
+          <div class="modal-info-content">
+            <span class="modal-tag" id="detalhe-tag">Ervas e Flores</span>
+            <h2 id="detalhe-nome">Nome do Produto</h2>
+            <p class="modal-desc" id="detalhe-desc">Descrição dos benefícios tradicionais e usos recomendados.</p>
+
+            <!-- Selos de qualidade autênticos (substituindo estrelas fakes) -->
+            <div class="modal-badges-row">
+              <div class="badge-item">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12c0-3.3 1.6-6.2 4-8"></path></svg>
+                <span>100% natural</span>
+              </div>
+              <div class="badge-item">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                <span>Sem aditivos</span>
+              </div>
+              <div class="badge-item">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                <span>A granel</span>
+              </div>
+            </div>
+
+            <!-- Seletor de quantidade -->
+            <div class="modal-qty-box">
+              <span>Quantidade:</span>
+              <div class="qty-control">
+                <button type="button" id="qty-minus" aria-label="Diminuir">-</button>
+                <span id="qty-valor">1</span>
+                <button type="button" id="qty-plus" aria-label="Aumentar">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer-action">
+          <button class="btn btn-primary btn-block" id="btn-modal-adicionar">
+            Adicionar à lista
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==============================
+         DRAWER: MEU CARRINHO (TELA 3 DA FOTO)
+    =============================== -->
+    <div class="cart-backdrop" id="cart-drawer" aria-hidden="true">
+      <div class="cart-sheet">
+
+        <div class="cart-header">
+          <button class="cart-back-btn" id="btn-fechar-carrinho" aria-label="Voltar para a loja">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+          </button>
+          <h3>Meu carrinho</h3>
+        </div>
+
+        <div class="cart-items-list" id="cart-items-container">
+          <!-- Os itens serão gerados dinamicamente via JavaScript -->
+        </div>
+
+        <div class="cart-footer">
+          <div class="cart-summary">
+            <div class="summary-line">
+              <span>Total de itens</span>
+              <strong id="cart-total-itens">0 selecionados</strong>
+            </div>
+            <div class="summary-note">
+              <span>Valores e peso exato conferidos no balcão de Parintins</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block" id="btn-finalizar-whatsapp">
+            Enviar lista pelo WhatsApp
+          </button>
+        </div>
+
+      </div>
+    </div>
+    
     <!-- ==============================
          NOVIDADES
     =============================== -->
